@@ -1,0 +1,21 @@
+html,
+body,
+#__next
+{
+    font-family: 'Montserrat', sans-serif;
+    height:      100vh;
+}
+
+.page-content
+{
+    height: 100vh;
+}
+
+@import 'base/_heading';
+@import 'base/_layout';
+@import 'base/_links';
+@import 'base/_modal';
+@import 'base/_typography';
+
+// components
+//// include components here
