@@ -1,8 +1,8 @@
 import Head from "next/head";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { Player, Team } from "../util/types";
-import { CreatePlayerDTO, CreateTeamDTO } from "../util/dto";
+import { Player, Team } from "@src/util/types";
+import { CreatePlayerDTO, CreateTeamDTO } from "@src/util/dto";
 
 const PlayerSchema = Yup.object().shape({
     firstName: Yup.string()
@@ -70,7 +70,9 @@ const Index = ({ players, teams }: Props) => {
                         {players ? players.map(player => {
                             return (
                                 <li key={player.id}>
-                                    {player.firstName} {player.lastName}, {player.team ? player.team.name : "Free Agent"}
+                                    <a href={`/player/${player.id}`}>
+                                        {player.firstName} {player.lastName}, {player.team ? player.team.name : "Free Agent"}
+                                    </a>
                                 </li>
                             );
                         }) : "No players found."}

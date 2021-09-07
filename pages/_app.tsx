@@ -1,4 +1,4 @@
-import "../styles/base.scss";
+import "@src/styles/base.scss";
 import { AppProps } from "next/app";
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {

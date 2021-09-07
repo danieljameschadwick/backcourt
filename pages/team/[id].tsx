@@ -1,8 +1,8 @@
+import React from "react";
 import Head from "next/head";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { Team, Player } from "../../util/types";
-import React from "react";
+import { Team, Player } from "@src/util/types";
 
 const PlayerSchema = Yup.object().shape({
     player: Yup.string()
@@ -52,8 +52,10 @@ const TeamDetail: React.FC<Props> = ({ team, freeAgents }: Props) => {
                     {players ? players.map(player => {
                         return (
                             <li key={player.id}>
-                                {player.firstName} {player.lastName}
-                                <button onClick={() => releasePlayer(player.team, player.id)}>Release</button>
+                                <a href={`/player/${player.id}`}>
+                                    {player.firstName} {player.lastName}
+                                    <button onClick={() => releasePlayer(player.team, player.id)}>Release</button>
+                                </a>
                             </li>
                         );
                     }) : ""}
