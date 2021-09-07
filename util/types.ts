@@ -21,11 +21,12 @@ export type TeamPlayer = {
     lastName: string;
     dateOfBirth: string;
     team?: string | null;
+    contract?: Contract | null;
     age?: number | null;
 };
 
 export type Contract = {
     id: string;
-    salaryPerYearCentesimal: number;
+    salaryPerYearDollar: number;
     yearsLeft: number;
 };

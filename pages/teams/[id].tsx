@@ -9,16 +9,6 @@ const PlayerSchema = Yup.object().shape({
         .required("Required"),
 });
 
-const releasePlayer = async (teamId: string, playerId: string): Promise<void> => {
-    const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-    };
-
-    await fetch(`${process.env.API}/team/${teamId}/release/${playerId}`, requestOptions);
-    window.location.reload();
-};
-
 const handleResign = async (teamId: string, playerId: string): Promise<void> => {
     const requestOptions = {
         method: "POST",
