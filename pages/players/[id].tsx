@@ -25,16 +25,18 @@ const PlayerDetail: React.FC<Props> = ({ player }: Props) => {
             </Head>
 
             <main>
-                <h1>{firstName} {lastName}</h1>
+                <div className={"container"}>
+                    <h1>{firstName} {lastName}</h1>
 
-                <ul>
-                    <li>{dateOfBirth}</li>
-                    <li>{age}</li>
-                    <li>{team ? team.name : "Free Agent"}</li>
-                    {player.contract
-                        ? <li>{currencyFormatter.format(salaryPerYearCentesimal)} / {yearsLeft} years</li>
-                        : ""}
-                </ul>
+                    <ul>
+                        <li>{dateOfBirth}</li>
+                        <li>{age}</li>
+                        <li>{team ? team.name : "Free Agent"}</li>
+                        {player.contract
+                            ? <li>{currencyFormatter.format(salaryPerYearCentesimal)} / {yearsLeft} years</li>
+                            : ""}
+                    </ul>
+                </div>
             </main>
         </div>
     );

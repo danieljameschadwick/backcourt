@@ -45,13 +45,13 @@ const Players = ({ teams }: Props) => {
             </Head>
 
             <main>
-                <div>
-                    <h2>Teams</h2>
+                <div className={"container"}>
+                    <h1>Teams</h1>
 
                     {teams ? teams.map(team => {
                         return (
                             <div key={team.id}>
-                                <a href={`/team/${team.id}`}>{team.name}</a>, {team.abbreviation}
+                                <a href={`/teams/${team.id}`}>{team.name}</a>, {team.abbreviation}
                             </div>
                         );
                     }) : "No teams found."}
@@ -76,7 +76,7 @@ const Players = ({ teams }: Props) => {
                               isSubmitting,
                               errors,
                               touched,
-                          }) => (
+                        }) => (
                             <form onSubmit={handleSubmit}>
                                 <div>
                                     <label>Name:</label>

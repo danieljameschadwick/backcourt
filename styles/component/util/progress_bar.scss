@@ -1,0 +1,21 @@
+.progress-bar--container
+{
+    height: 20px;
+    width: 100%;
+    background-color: #E0E0DE;
+    border-radius: 25px;
+    margin: 50px;
+}
+
+.progress-bar--filler
+{
+    height: 100%;
+    border-radius: inherit;
+    text-align: right;
+}
+
+.progress-bar--text
+{
+    padding: 5px;
+    color: white;
+}

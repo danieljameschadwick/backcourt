@@ -62,14 +62,14 @@ const Players = ({ players, teams }: Props) => {
             </Head>
 
             <main>
-                <div>
-                    <h2>Players</h2>
+                <div className={"container"}>
+                    <h1>Players</h1>
 
                     <ul>
                         {players ? players.map(player => {
                             return (
                                 <li key={player.id}>
-                                    <a href={`/player/${player.id}`}>
+                                    <a href={`/players/${player.id}`}>
                                         {player.firstName} {player.lastName}, {player.team ? player.team.name : "Free Agent"}
                                     </a>
                                 </li>
