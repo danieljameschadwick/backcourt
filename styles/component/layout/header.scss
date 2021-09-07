@@ -1,0 +1,46 @@
+@import 'userbar';
+
+.header
+{
+    width: 100%;
+}
+
+.header--navigation
+{
+    display: flex;
+    background-color: $primary;
+    padding: 0.75em;
+
+    .brand
+    {
+        margin-right: 1.25em;
+
+        a
+        {
+            color: $white;
+            font-size: 1.25rem;
+            font-weight: 500;
+            text-decoration: none;
+        }
+    }
+
+    .links
+    {
+        display: flex;
+        align-items: center;
+
+        a
+        {
+            color: $white;
+            font-size: 0.90rem;
+            text-decoration: none;
+            margin-right: 0.60rem;
+
+            &:hover
+            {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+

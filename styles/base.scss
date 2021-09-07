@@ -1,9 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
 html,
 body,
 #__next
 {
-    font-family: 'Montserrat', sans-serif;
-    height:      100vh;
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
 .page-content
@@ -11,6 +15,7 @@ body,
     height: 100vh;
 }
 
+@import 'base/_colours';
 @import 'base/_heading';
 @import 'base/_layout';
 @import 'base/_links';
@@ -18,4 +23,4 @@ body,
 @import 'base/_typography';
 
 // components
-//// include components here
+@import 'component/layout/header';
