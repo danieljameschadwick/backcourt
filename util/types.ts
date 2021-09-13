@@ -1,8 +1,13 @@
+import { Position } from "@src/util/enum";
+
 export type Player = {
     id?: string | null;
     firstName: string;
     lastName: string;
     dateOfBirth: string;
+    number: string;
+    position: Position;
+    fitness: number;
     team?: Team | null;
     contract?: Contract | null;
     age?: number | null;
@@ -20,6 +25,10 @@ export type TeamPlayer = {
     firstName: string;
     lastName: string;
     dateOfBirth: string;
+    number: string;
+    position: Position;
+    fitness: number;
+    country?: string | null;
     team?: string | null;
     contract?: Contract | null;
     age?: number | null;

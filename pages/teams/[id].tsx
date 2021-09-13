@@ -39,7 +39,7 @@ const TeamDetail: React.FC<Props> = ({ team, freeAgents }: Props) => {
                 <div className={"container"}>
                     <h1>{name}</h1>
 
-                    <div className={"team-player--card-container"}>
+                    <div className={"player-card--container"}>
                         {players ? players.map(player => {
                             return (
                                 <TeamPlayerCard key={player.id} player={player} />

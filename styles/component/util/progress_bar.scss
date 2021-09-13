@@ -1,10 +1,10 @@
 .progress-bar--container
 {
-    height: 20px;
+    height: 1.25em;
     width: 100%;
     background-color: #E0E0DE;
-    border-radius: 25px;
-    margin: 50px;
+    border: 0.1em solid $primary;
+    position: relative;
 }
 
 .progress-bar--filler
@@ -16,6 +16,11 @@
 
 .progress-bar--text
 {
-    padding: 5px;
-    color: white;
+    position: absolute;
+    color: $white;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
 }

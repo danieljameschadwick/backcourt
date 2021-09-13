@@ -10,11 +10,11 @@ const ProgressBar = ({ percentage }: Props) => {
 
     return (
         <div className={"progress-bar--container"}>
-            <div className={"progress-bar--filler"} style={fillerStyle}>
-                <span className={"progress-bar--text text--bold"}>
-                    {`${percentage}%`}
-                </span>
-            </div>
+            <div className={"progress-bar--filler"} style={fillerStyle} />
+
+            <span className={"progress-bar--text text--bold"}>
+                {`${percentage}%`}
+            </span>
         </div>
     );
 };
