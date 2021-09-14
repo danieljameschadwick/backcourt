@@ -2,7 +2,7 @@ const Header: React.FC = () => {
     return (
         <div className={"header--userbar"}>
             <div className={"user-links"}>
-                <a href={"#"}>Log in</a>
+                <a href={"/login"}>Log in</a>
 
                 <span className={"splitter"}>|</span>
 
