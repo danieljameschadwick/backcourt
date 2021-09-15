@@ -3,6 +3,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { LoginDTO } from "@src/util/dto/LoginDTO";
 import { useStateValue } from "@src/state/StateProvider";
+import { useEffect } from "react";
 
 const LoginSchema = Yup.object().shape({
     username: Yup.string()
@@ -14,7 +15,12 @@ const LoginSchema = Yup.object().shape({
 });
 
 const Login = () => {
-    const [ { user }, dispatch ] = useStateValue();
+    const [ state, dispatch ] = useStateValue();
+    const { user } = state;
+
+    useEffect(() => {
+        localStorage.setItem('state', JSON.stringify(state))
+    }, [state])
 
     const handlePost = async (dto: LoginDTO) => {
         const requestOptions = {
@@ -30,7 +36,6 @@ const Login = () => {
         }
 
         const data = await response.json();
-        console.log(data);
 
         dispatch({ type: "setUsername", username: data.username });
         dispatch({ type: "setAccessToken", accessToken: data.access_token });
@@ -48,7 +53,7 @@ const Login = () => {
                 <div className={"container"}>
                     <h1>Login</h1>
 
-                    {user?.username}
+                    <span>{user?.username}</span>
 
                     <Formik
                         initialValues={{
