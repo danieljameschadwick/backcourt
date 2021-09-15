@@ -18,10 +18,6 @@ const Login = () => {
     const [ state, dispatch ] = useStateValue();
     const { user } = state;
 
-    useEffect(() => {
-        localStorage.setItem('state', JSON.stringify(state))
-    }, [state])
-
     const handlePost = async (dto: LoginDTO) => {
         const requestOptions = {
             method: "POST",
