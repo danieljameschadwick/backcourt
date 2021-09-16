@@ -1,0 +1,156 @@
+.card-player--header
+{
+    .pro-team-container
+    {
+        width: 155px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .player-header-gradient
+    {
+        position: absolute;
+        height: 155px;
+        width: 100%;
+        background: linear-gradient(-71deg, rgb(255, 255, 255) 71%, rgba(255, 255, 255, 0) 15%);
+        top: 0;
+
+        @media screen and (min-width: 700px) and (max-width: 900px)
+        {
+            background: linear-gradient(-71deg, rgb(255, 255, 255) 80%, rgba(255, 255, 255, 0) 15%);
+        }
+    }
+
+    .player-headshot
+    {
+        position: relative;
+        height: 144px;
+        z-index: 2;
+
+        img
+        {
+            position: absolute;
+        }
+    }
+
+    .player-info
+    {
+        width: 75%;
+        position: absolute;
+        top: 10px;
+        left: 130px;
+        z-index: 1;
+        display: flex;
+        -webkit-box-pack: end;
+        justify-content: flex-end;
+
+        @media screen and (max-width: 450px)
+        {
+            left: 0;
+            width: 100%;
+        }
+
+        .quick-info
+        {
+            width: 14%;
+
+            @media screen and (max-width: 792px)
+            {
+                width: 17%;
+            }
+        }
+
+        .player-jersey
+        {
+            color: $primary;
+            font-size: 3.3em;
+            line-height: 0.75em;
+            text-align: center;
+            margin-bottom: 0.15em;
+            position: relative;
+
+            &::before
+            {
+                content: "#";
+                font-size: 9px;
+                line-height: 9px;
+                vertical-align: top;
+                position: absolute;
+                margin-left: -0.75em;
+            }
+        }
+
+        .player-position
+        {
+            color: $primary;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        .player-container
+        {
+            width: 46%;
+            border-color: rgb(220, 221, 223);
+            border-right-style: solid;
+            border-right-width: 1px;
+            margin-top: -0.30em;
+
+            @media screen and (max-width: 450px)
+            {
+                border: 0;
+            }
+
+            .player-name
+            {
+                font-size: 1.70em;
+            }
+
+            .player-team-name
+            {
+                display: block;
+                color: rgb(170, 170, 170);
+                font-size: 1em;
+                line-height: 1.5em;
+                margin-bottom: 0.75em;
+            }
+        }
+
+        .statTable
+        {
+            .player-stat-label
+            {
+                margin-right: 0.25em;
+                font-weight: 500;
+            }
+
+            .stat
+            {
+                display: flex;
+                margin-bottom: 0.35em;
+            }
+        }
+
+        .stat-column
+        {
+            width: 40%;
+            padding-left: 12px;
+            line-height: 15px;
+
+            @media screen and (max-width: 450px)
+            {
+                display: none;
+            }
+
+            .ranking
+            {
+                margin-bottom: 1em;
+            }
+
+            .recent-game-label
+            {
+                margin-bottom: 0.5em;
+                font-weight: 500;
+            }
+        }
+    }
+}

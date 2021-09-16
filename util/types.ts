@@ -32,10 +32,15 @@ export type TeamPlayer = {
     team?: string | null;
     contract?: Contract | null;
     age?: number | null;
+    attributes?: Attributes | null;
 };
 
 export type Contract = {
     id: string;
     salaryPerYearDollar: number;
     yearsLeft: number;
+};
+
+export type Attributes = {
+    id: string;
 };

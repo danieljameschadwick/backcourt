@@ -1,11 +1,12 @@
 type Props = {
     percentage: number;
+    showPercentage: boolean;
 };
 
-const ProgressBar = ({ percentage }: Props) => {
+const ProgressBar = ({ percentage, showPercentage = true }: Props) => {
     const fillerStyle = {
         width: `${percentage}%`,
-        backgroundColor: '#FF7D12',
+        backgroundColor: "#FF7D12",
     };
 
     return (
@@ -13,7 +14,7 @@ const ProgressBar = ({ percentage }: Props) => {
             <div className={"progress-bar--filler"} style={fillerStyle} />
 
             <span className={"progress-bar--text text--bold"}>
-                {`${percentage}%`}
+                {showPercentage ? (percentage + "%" ) : ""}
             </span>
         </div>
     );
