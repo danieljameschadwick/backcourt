@@ -15,9 +15,9 @@ const Header: React.FC = () => {
             <div className={"user-links"}>
                 {user.username ?
                     (
-                        <span>
+                        <a href={"#"}>
                             {user.username}
-                        </span>
+                        </a>
                     ) : (
                         <a href={"/login"}>
                             Log in
@@ -29,9 +29,9 @@ const Header: React.FC = () => {
 
                 {user.username ?
                     (
-                        <span onClick={() => logout()}>
+                        <a href={"#"} onClick={() => logout()}>
                             Logout
-                        </span>
+                        </a>
                     ) : (
                         <a href={"#"}>
                             Register
