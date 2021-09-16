@@ -15,7 +15,7 @@ const Header: React.FC = () => {
             <div className={"user-links"}>
                 {user.username ?
                     (
-                        <a href={"#"}>
+                        <a href={`/user/${user.username}`}>
                             {user.username}
                         </a>
                     ) : (
