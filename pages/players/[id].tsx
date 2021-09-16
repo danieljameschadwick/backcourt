@@ -32,9 +32,9 @@ const PlayerDetail: React.FC<Props> = ({ player }: Props) => {
                         <li>{dateOfBirth}</li>
                         <li>{age}</li>
                         <li>{team ? team.name : "Free Agent"}</li>
-                        {player.contract
-                            ? <li>{currencyFormatter.format(salaryPerYearDollar)} / {yearsLeft} years</li>
-                            : ""}
+                        {player.contract ? (
+                            <li>{currencyFormatter.format(salaryPerYearDollar)} / {yearsLeft} years</li>
+                        ) : ""}
                     </ul>
                 </div>
             </main>

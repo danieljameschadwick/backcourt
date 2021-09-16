@@ -25,10 +25,15 @@
     font-weight: normal;
     position: relative;
     height: 155px;
-    width: 100%;
+    width: 50%;
     overflow: hidden;
     border-radius: 10px;
     margin-bottom: 1em;
+
+    @media screen and (max-width: 900px)
+    {
+        width: 100%;
+    }
 
     .pro-team-container
     {
@@ -44,6 +49,11 @@
         width: 100%;
         background: linear-gradient(-71deg, rgb(255, 255, 255) 71%, rgba(255, 255, 255, 0) 15%);
         top: 0;
+
+        @media screen and (min-width: 700px) and (max-width: 900px)
+        {
+            background: linear-gradient(-71deg, rgb(255, 255, 255) 80%, rgba(255, 255, 255, 0) 15%);
+        }
     }
 
     .player-headshot
@@ -69,9 +79,20 @@
         -webkit-box-pack: end;
         justify-content: flex-end;
 
+        @media screen and (max-width: 450px)
+        {
+            left: 0;
+            width: 100%;
+        }
+
         .quick-info
         {
             width: 14%;
+
+            @media screen and (max-width: 792px)
+            {
+                width: 17%;
+            }
         }
 
         .player-jersey
@@ -109,6 +130,11 @@
             border-right-width: 1px;
             margin-top: -0.30em;
 
+            @media screen and (max-width: 450px)
+            {
+                border: 0;
+            }
+
             .player-name
             {
                 font-size: 1.70em;
@@ -144,6 +170,11 @@
             width: 40%;
             padding-left: 12px;
             line-height: 15px;
+
+            @media screen and (max-width: 450px)
+            {
+                display: none;
+            }
 
             .ranking
             {
