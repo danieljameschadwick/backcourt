@@ -1,4 +1,6 @@
 import { Position } from "@src/util/enum";
+import { AttributeType } from "@src/util/enum/AttributeType";
+import { AttributeEnum } from "@src/util/enum/AttributeEnum";
 
 export type Player = {
     id?: string | null;
@@ -32,7 +34,7 @@ export type TeamPlayer = {
     team?: string | null;
     contract?: Contract | null;
     age?: number | null;
-    attributes?: Attributes | null;
+    attributes: Attribute[];
 };
 
 export type Contract = {
@@ -41,23 +43,9 @@ export type Contract = {
     yearsLeft: number;
 };
 
-export type Attributes = {
+export type Attribute = {
     id: string;
-    overall: number;
-    potential: number;
-    height: number;
-    strength: number;
-    speed: number;
-    jump: number;
-    stamina: number;
-    insideShot: number;
-    dunk: number;
-    freeThrow: number;
-    midRangeShot: number;
-    threePointShot: number;
-    defensiveIq: number;
-    offensiveIq: number;
-    defensiveRebound: number;
-    passing: number;
-    rebounding: number;
+    name: AttributeEnum;
+    type: AttributeType;
+    value: number;
 };

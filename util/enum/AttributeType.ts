@@ -1,0 +1,7 @@
+export enum AttributeType {
+    FINISHING = "FINISHING",
+    ATHLETICISM = "ATHLETICISM",
+    SHOOTING = "SHOOTING",
+    OFFENSIVE = "OFFENSIVE",
+    DEFENSIVE = "DEFENSIVE",
+}

@@ -1,13 +1,15 @@
+import { AttributeLabelMap } from "@src/util/enum/AttributeEnum";
+
 type Props = {
-    label: string;
+    name: string;
     overall: number;
 };
 
-const PlayerAttribute = ({ label, overall }: Props) => {
+const PlayerAttribute = ({ name, overall }: Props) => {
     return (
         <div className={"attribute"}>
             <span className={"attribute--label"}>
-                {label}:
+                {AttributeLabelMap[name]}:
             </span>
 
             <span className={"attribute--overall"}>

@@ -18,7 +18,7 @@ type Props = {
 };
 
 const TeamPlayerCard = ({ player }: Props) => {
-    const { attributes = null } = player;
+    const { attributes } = player;
 
     return (
         <div className={"team-player--card"}>
