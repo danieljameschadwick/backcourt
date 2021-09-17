@@ -43,4 +43,21 @@ export type Contract = {
 
 export type Attributes = {
     id: string;
+    overall: number;
+    potential: number;
+    height: number;
+    strength: number;
+    speed: number;
+    jump: number;
+    stamina: number;
+    insideShot: number;
+    dunk: number;
+    freeThrow: number;
+    midRangeShot: number;
+    threePointShot: number;
+    defensiveIq: number;
+    offensiveIq: number;
+    defensiveRebound: number;
+    passing: number;
+    rebounding: number;
 };

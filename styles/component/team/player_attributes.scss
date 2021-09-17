@@ -5,6 +5,7 @@
         display: flex;
         flex-wrap: nowrap;
         justify-content: space-between;
+        margin-bottom: 1.5em;
 
         .attribute-group
         {
@@ -24,6 +25,34 @@
             {
                 font-size: 1.30em;
                 margin-bottom: 0.25em;
+            }
+        }
+    }
+
+    .attributes
+    {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 7em);
+        justify-content: space-between;
+        grid-gap: 1em;
+
+        .attribute
+        {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+
+            .attribute--label
+            {
+                font-weight: 500;
+                margin-right: 0.20em;
+            }
+
+            .attribute--overall
+            {
+                font-size: 1.1em;
+                font-weight: 600;
             }
         }
     }

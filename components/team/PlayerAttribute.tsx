@@ -1,5 +1,3 @@
-import ProgressBar from "@src/components/util/ProgressBar";
-
 type Props = {
     label: string;
     overall: number;
@@ -7,16 +5,14 @@ type Props = {
 
 const PlayerAttribute = ({ label, overall }: Props) => {
     return (
-        <div className={"attribute-group"}>
-            <span className={"attribute-label"}>
-                {label}
+        <div className={"attribute"}>
+            <span className={"attribute--label"}>
+                {label}:
             </span>
 
-            <span className={"overall"}>
+            <span className={"attribute--overall"}>
                 {overall}
             </span>
-
-            <ProgressBar percentage={overall} showPercentage={false} />
         </div>
     );
 };

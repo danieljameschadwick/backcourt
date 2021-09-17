@@ -39,6 +39,11 @@ const TeamDetail: React.FC<Props> = ({ team, freeAgents }: Props) => {
                 <div className={"container"}>
                     <h1>{name}</h1>
 
+                    <div className={"controls"} style={{marginBottom: "1em"}}>
+                        <button>Show all attributes</button>
+                        <button>Show all details</button>
+                    </div>
+
                     <div className={"player-card--container"}>
                         {players ? players.map(player => {
                             return (
