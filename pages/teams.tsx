@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { Player, Team } from "@src/util/types";
+import { Team } from "@src/util/types";
 import { CreatePlayerDTO, CreateTeamDTO } from "@src/util/dto";
 
 const TeamSchema = Yup.object().shape({
@@ -120,15 +120,11 @@ const Players = ({ teams }: Props) => {
 };
 
 export const getStaticProps = async () => {
-    const playersResponse = await fetch(`${process.env.API}/player`);
-    const players: Player[] = await playersResponse.json();
-
     const teamsResponse = await fetch(`${process.env.API}/team`);
     const teams: Team[] = await teamsResponse.json();
 
     return {
         props: {
-            players,
             teams,
         },
     };
