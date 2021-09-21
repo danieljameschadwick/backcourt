@@ -8,10 +8,6 @@ type Props = {
 };
 
 const PlayerAttributes = ({ attributes }: Props) => {
-    // @TODO: fix backend serialization
-    delete attributes.initialized;
-    delete attributes.dirty;
-
     return (
         <PlayerCard title={"Attributes"} showControls={true}>
             <div className={"attribute-groups"}>
@@ -37,7 +33,7 @@ const PlayerAttributes = ({ attributes }: Props) => {
             </div>
 
             <div className={"attributes"}>
-                {attributes ? Object.values(attributes).map((attribute) => (
+                {attributes ? attributes.map((attribute) => (
                     <PlayerAttribute
                         key={attribute.id}
                         name={attribute.name}

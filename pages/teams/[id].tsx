@@ -27,10 +27,6 @@ type Props = {
 const TeamDetail: React.FC<Props> = ({ team, freeAgents }: Props) => {
     const { name, players } = team;
 
-    // @TODO: fix backend serialization
-    delete players.initialized;
-    delete players.dirty;
-
     return (
         <div>
             <Head>
@@ -50,7 +46,7 @@ const TeamDetail: React.FC<Props> = ({ team, freeAgents }: Props) => {
                     </div>
 
                     <div className={"player-card--container"}>
-                        {players ? Object.values(players).map(player => {
+                        {players ? players.map(player => {
                             return (
                                 <TeamPlayerCard key={player.id} player={player} />
                             );
