@@ -1,12 +1,20 @@
 import Head from "next/head";
 import { Player } from "@src/util/types";
 import currencyFormatter from "@src/util/currencyFormatter";
+import _404 from "@src/pages/404";
+import { HttpStatus } from "@src/util/HttpStatus";
 
 type Props = {
-    player: Player;
+    player: Player | null;
 };
 
 const PlayerDetail: React.FC<Props> = ({ player }: Props) => {
+    if (!player) {
+        return (
+            <_404 message="Player not found." />
+        );
+    }
+
     const {
         firstName,
         lastName,
@@ -52,7 +60,10 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
     const playerResponse = await fetch(`${process.env.API}/player/${params.id}`);
-    const player = await playerResponse.json();
+    const player = playerResponse.status === HttpStatus.OK
+        ? await playerResponse.json()
+        : null
+    ;
 
     return {
         props: {

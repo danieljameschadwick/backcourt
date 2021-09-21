@@ -3,6 +3,8 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { Team, Player } from "@src/util/types";
 import TeamPlayerCard from "@src/components/team/TeamPlayerCard";
+import { HttpStatus } from "@src/util/HttpStatus";
+import _404 from "@src/pages/404";
 
 const PlayerSchema = Yup.object().shape({
     player: Yup.string()
@@ -20,11 +22,17 @@ const handleResign = async (teamId: string, playerId: string): Promise<void> => 
 };
 
 type Props = {
-    team: Team;
+    team: Team | null;
     freeAgents: Player[];
 };
 
 const TeamDetail: React.FC<Props> = ({ team, freeAgents }: Props) => {
+    if (!team) {
+        return (
+            <_404 message="Team not found." />
+        );
+    }
+
     const { name, players } = team;
 
     return (
@@ -122,7 +130,10 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
     const teamResponse = await fetch(`${process.env.API}/team/${params.id}`);
-    const team = await teamResponse.json();
+    const team = teamResponse.status === HttpStatus.OK
+        ? await teamResponse.json()
+        : null
+    ;
 
     const freeAgentsResponse = await fetch(`${process.env.API}/player/free-agents`);
     const freeAgents = await freeAgentsResponse.json();
