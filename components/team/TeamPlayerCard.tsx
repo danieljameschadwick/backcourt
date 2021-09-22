@@ -1,4 +1,4 @@
-import { TeamPlayer } from "@src/util/types";
+import { Team, TeamPlayer } from "@src/util/types";
 import PlayerHeader from "@src/components/team/PlayerHeader";
 import PlayerAttributes from "@src/components/team/PlayerAttributes";
 import PlayerRecentGames from "@src/components/team/PlayerRecentGames";
@@ -14,15 +14,16 @@ const releasePlayer = async (teamId: string, playerId: string): Promise<void> =>
 };
 
 type Props = {
+    team: Team;
     player: TeamPlayer;
 };
 
-const TeamPlayerCard = ({ player }: Props) => {
+const TeamPlayerCard = ({ team, player }: Props) => {
     const { attributes } = player;
 
     return (
         <div className={"team-player--card"}>
-            <PlayerHeader player={player} />
+            <PlayerHeader team={team} player={player} />
 
             { attributes ? (
                 <PlayerAttributes attributes={attributes} />
