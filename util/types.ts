@@ -34,6 +34,10 @@ export type TeamPlayer = {
     team?: string | null;
     contract?: Contract | null;
     age?: number | null;
+    finishing: number;
+    shooting: number;
+    defense: number;
+    athleticism: number;
     attributes: Attribute[];
 };
 

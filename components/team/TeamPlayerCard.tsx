@@ -19,14 +19,20 @@ type Props = {
 };
 
 const TeamPlayerCard = ({ team, player }: Props) => {
-    const { attributes } = player;
+    const { finishing, shooting, defense, athleticism, attributes } = player;
 
     return (
         <div className={"team-player--card"}>
             <PlayerHeader team={team} player={player} />
 
             { attributes ? (
-                <PlayerAttributes attributes={attributes} />
+                <PlayerAttributes
+                    finishing={finishing}
+                    shooting={shooting}
+                    defense={defense}
+                    athleticism={athleticism}
+                    attributes={attributes}
+                />
             ) : '' }
 
             { attributes ? (

@@ -34,7 +34,7 @@ const PlayerHeader = ({ team, player }: Props) => {
 
                     <span className={"player-team-name"}>{team.name}, {team.abbreviation}</span>
 
-                    <div className={"statTable"}>
+                    <div className={"recent-stat-table"}>
                         <div className={"stat"}>
                             <div className={"player-stat-label"}>DoB:</div>
                             <div className={"stat-value"}>
@@ -58,7 +58,7 @@ const PlayerHeader = ({ team, player }: Props) => {
                         </div>
                     </div>
                 </div>
-                <div className={"stat-column statTable"}>
+                <div className={"stat-column recent-stat-table"}>
                     <div className={"stat ranking"}>
                         <div className={"player-stat-label"}>League Rank:</div>
                         <div className={"player-stat-value"}># -</div>

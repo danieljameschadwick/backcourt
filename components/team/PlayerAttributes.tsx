@@ -4,31 +4,35 @@ import PlayerAttribute from "@src/components/team/PlayerAttribute";
 import PlayerCard from "@src/components/team/PlayerCard";
 
 type Props = {
+    finishing: number;
+    shooting: number;
+    defense: number;
+    athleticism: number;
     attributes: Attribute[];
 };
 
-const PlayerAttributes = ({ attributes }: Props) => {
+const PlayerAttributes = ({ finishing, shooting, defense, athleticism, attributes }: Props) => {
     return (
         <PlayerCard title={"Attributes"} showControls={true}>
             <div className={"attribute-groups"}>
                 <PlayerAttributeGroup
                     label={"Finishing"}
-                    overall={89}
+                    overall={finishing}
                 />
 
                 <PlayerAttributeGroup
                     label={"Shooting"}
-                    overall={77}
+                    overall={shooting}
                 />
 
                 <PlayerAttributeGroup
                     label={"Defense"}
-                    overall={81}
+                    overall={defense}
                 />
 
                 <PlayerAttributeGroup
                     label={"Athleticism"}
-                    overall={72}
+                    overall={athleticism}
                 />
             </div>
 
