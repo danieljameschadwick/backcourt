@@ -13,6 +13,7 @@ export type Player = {
     team?: Team | null;
     contract?: Contract | null;
     age?: number | null;
+    attributes: Attribute[];
 };
 
 export type Team = {

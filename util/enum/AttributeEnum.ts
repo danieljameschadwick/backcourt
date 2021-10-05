@@ -12,7 +12,7 @@ export enum AttributeEnum {
     BALL_CONTROL = "BALL_CONTROL",
     OFFENSIVE_IQ = "OFFENSIVE_IQ",
     DEFENSIVE_IQ = "DEFENSIVE_IQ",
-    DEFENSIVE_REBOUND = "DEFENSIVE_REBOUND",
+    DEFENSIVE_REBOUNDING = "DEFENSIVE_REBOUNDING",
     REBOUNDING = "REBOUNDING",
 }
 
@@ -30,6 +30,42 @@ export const AttributeLabelMap = {
     [AttributeEnum.BALL_CONTROL]: "Ball Control",
     [AttributeEnum.OFFENSIVE_IQ]: "Offensive IQ",
     [AttributeEnum.DEFENSIVE_IQ]: "Defensive IQ",
-    [AttributeEnum.DEFENSIVE_REBOUND]: "Defensive Rebound",
+    [AttributeEnum.DEFENSIVE_REBOUNDING]: "Defensive Rebounding",
     [AttributeEnum.REBOUNDING]: "Rebounding",
+}
+
+export const AttributeNameMap = {
+    [AttributeEnum.STRENGTH]: "strength",
+    [AttributeEnum.SPEED]: "speed",
+    [AttributeEnum.JUMP]: "jump",
+    [AttributeEnum.STAMINA]: "stamina",
+    [AttributeEnum.INSIDE_SHOT]: "insideShot",
+    [AttributeEnum.DUNK]: "dunk",
+    [AttributeEnum.FREE_THROW]: "freeThrow",
+    [AttributeEnum.MID_RANGE_SHOT]: "midRangeShot",
+    [AttributeEnum.THREE_POINT_SHOT]: "threePointShot",
+    [AttributeEnum.PASSING]: "passing",
+    [AttributeEnum.BALL_CONTROL]: "ballControl",
+    [AttributeEnum.OFFENSIVE_IQ]: "offensiveIq",
+    [AttributeEnum.DEFENSIVE_IQ]: "defensiveIq",
+    [AttributeEnum.DEFENSIVE_REBOUNDING]: "defensiveRebounding",
+    [AttributeEnum.REBOUNDING]: "rebounding",
+}
+
+export const AttributeNameHandleMap = {
+    ["strength"]: AttributeEnum.STRENGTH,
+    ["speed"]: AttributeEnum.SPEED,
+    ["jump"]: AttributeEnum.JUMP,
+    ["stamina"]: AttributeEnum.STAMINA,
+    ["insideShot"]: AttributeEnum.INSIDE_SHOT,
+    ["dunk"]: AttributeEnum.DUNK,
+    ["freeThrow"]: AttributeEnum.FREE_THROW,
+    ["midRangeShot"]: AttributeEnum.MID_RANGE_SHOT,
+    ["threePointShot"]: AttributeEnum.THREE_POINT_SHOT,
+    ["passing"]: AttributeEnum.PASSING,
+    ["ballControl"]: AttributeEnum.BALL_CONTROL,
+    ["offensiveIq"]: AttributeEnum.OFFENSIVE_IQ,
+    ["defensiveIq"]: AttributeEnum.DEFENSIVE_IQ,
+    ["defensiveRebounding"]: AttributeEnum.DEFENSIVE_REBOUNDING,
+    ["rebounding"]: AttributeEnum.REBOUNDING,
 }

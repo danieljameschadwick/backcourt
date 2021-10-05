@@ -2,7 +2,6 @@ import Head from "next/head";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { Team, Player } from "@src/util/types";
-import TeamPlayerCard from "@src/components/team/TeamPlayerCard";
 import { HttpStatus } from "@src/util/HttpStatus";
 import _404 from "@src/pages/404";
 
@@ -26,7 +25,7 @@ type Props = {
     freeAgents: Player[];
 };
 
-const TeamDetail: React.FC<Props> = ({ team, freeAgents }: Props) => {
+const TeamAdminDetail: React.FC<Props> = ({ team, freeAgents }: Props) => {
     if (!team) {
         return (
             <_404 message="Team not found." />
@@ -38,7 +37,7 @@ const TeamDetail: React.FC<Props> = ({ team, freeAgents }: Props) => {
     return (
         <div>
             <Head>
-                <title>Backcourt | {name}</title>
+                <title>Backcourt | Admin | {name}</title>
                 <meta name={"description"} content={`${name}'s Page`} />
                 <link rel={"icon"} href={"/favicon.ico"} />
             </Head>
@@ -47,19 +46,17 @@ const TeamDetail: React.FC<Props> = ({ team, freeAgents }: Props) => {
                 <div className={"container"}>
                     <h1>{name}</h1>
 
-                    {/* @TODO: remove hard coded styling controls */}
-                    <div className={"controls"} style={{marginBottom: "1em"}}>
-                        <button>Show all attributes</button>
-                        <button>Show all details</button>
-                    </div>
-
-                    <div className={"player-card--container"}>
+                    <ul>
                         {players ? players.map(player => {
                             return (
-                                <TeamPlayerCard key={player.id} team={team} player={player} />
+                                <li key={player.id}>
+                                    <a href={`/admin/players/${player.id}`}>
+                                        {player.firstName} {player.lastName}
+                                    </a>
+                                </li>
                             );
                         }) : ""}
-                    </div>
+                    </ul>
 
                     <h2>Sign</h2>
 
@@ -145,4 +142,4 @@ export const getStaticProps = async ({ params }) => {
     };
 }
 
-export default TeamDetail;
+export default TeamAdminDetail;
