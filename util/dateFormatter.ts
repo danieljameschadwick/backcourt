@@ -1,3 +1,5 @@
+import { format, parse, parseISO } from 'date-fns';
+
 const calculateAge = (dateOfBirth: Date): number => {
     const ageDifMs = Date.now() - dateOfBirth.getTime();
     const ageDate = new Date(ageDifMs);
@@ -13,7 +15,23 @@ const formatDate = (date: Date): string => {
     return `${day}/${month}/${year}`;
 };
 
+const formatDateFriendly = (date: string): string => {
+    return format(
+        parseISO(date),
+        'dd MMMM, yyyy',
+    )
+};
+
+const formatTimeFriendly = (date: string): string => {
+    return format(
+        parseISO(date),
+        'H:i',
+    )
+};
+
 export {
     calculateAge,
     formatDate,
+    formatDateFriendly,
+    formatTimeFriendly,
 };

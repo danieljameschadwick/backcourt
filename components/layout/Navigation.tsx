@@ -15,6 +15,10 @@ const Navigation: React.FC = () => {
                 <a href={"/players"}>
                     Players
                 </a>
+
+                <a href={"/games"}>
+                    Games
+                </a>
             </div>
         </div>
     );

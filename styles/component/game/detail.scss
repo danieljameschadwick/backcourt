@@ -1,0 +1,90 @@
+.game--header
+{
+    height: 100px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (min-width: 1280px)
+    {
+        width: 1280px;
+    }
+
+    .team--content
+    {
+        display: flex;
+        flex-basis: 100%;
+
+        .team--container
+        {
+            display: flex;
+
+            .team--logo
+            {
+                height: 40px;
+                overflow: hidden;
+            }
+
+            .team--info
+            {
+                display: flex;
+                flex-wrap: wrap;
+
+                .team--name
+                {
+                    width: 100%;
+                }
+
+                .team--record
+                {
+                    width: 100%;
+
+                    // @TODO: smaller record text
+                }
+            }
+        }
+
+        .score--container
+        {
+
+        }
+    }
+
+    .away-team
+    {
+        .team--name
+        {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .team--record
+        {
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+
+    .game-status
+    {
+        min-width: 216px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .game-status--date
+        {
+            width: 100%;
+            text-align: center;
+            font-size: 0.85em;
+            line-height: 1.75em;
+        }
+
+        .game-status--time
+        {
+            font-size: 0.75em;
+        }
+    }
+}

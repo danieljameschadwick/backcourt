@@ -35,11 +35,11 @@ type Props = {
     teams: Team[];
 };
 
-const Players = ({ teams }: Props) => {
+const Teams = ({ teams }: Props) => {
     return (
         <div>
             <Head>
-                <title>Backcourt | Players</title>
+                <title>Backcourt | Teams</title>
                 <meta name="description" content="" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
@@ -130,4 +130,4 @@ export const getStaticProps = async () => {
     };
 };
 
-export default Players;
+export default Teams;
