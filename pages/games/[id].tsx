@@ -42,15 +42,15 @@ const GameDetail: React.FC<Props> = ({ game }: Props) => {
                         <div className={"game-status"}>
                             {scheduledDateTime ? (
                                 <>
-                                <span className={"game-status--date"}>
-                                    {formatDateFriendly(scheduledDateTime)}
-                                </span>
+                                    <span className={"game-status--date"}>
+                                        {formatDateFriendly(scheduledDateTime)}
+                                    </span>
 
                                     <span className={"game-status--time"}>
-                                    {formatTimeFriendly(scheduledDateTime)} GMT
-                                </span>
+                                        {formatTimeFriendly(scheduledDateTime)} GMT
+                                    </span>
                                 </>
-                            ): ''}
+                            ) : ""}
                         </div>
 
                         <HeaderTeamCard team={game.homeTeam} />
@@ -89,6 +89,6 @@ export const getStaticProps = async ({ params }) => {
             game,
         },
     };
-}
+};
 
 export default GameDetail;

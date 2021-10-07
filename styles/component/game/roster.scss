@@ -1,0 +1,19 @@
+.table
+{
+    th
+    {
+        &.position
+        {
+            width: 25px;
+            text-align: center;
+        }
+    }
+
+    td
+    {
+        &.position
+        {
+            text-align: center;
+        }
+    }
+}

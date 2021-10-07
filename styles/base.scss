@@ -20,6 +20,7 @@ body,
 @import 'base/_layout';
 @import 'base/_links';
 @import 'base/_modal';
+@import 'base/_table';
 @import 'base/_typography';
 
 // components
@@ -28,4 +29,5 @@ body,
 @import 'component/util/progress_bar';
 
 @import 'component/game/card';
-@import 'component/game/detail';
+@import 'component/game/header';
+@import 'component/game/roster';
