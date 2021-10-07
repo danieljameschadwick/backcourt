@@ -4,6 +4,8 @@ import { HttpStatus } from "@src/util/HttpStatus";
 import { Game } from "@src/util/type/Game";
 import HeaderTeamCard from "@src/components/game/HeaderTeamCard";
 import { formatDateFriendly, formatTimeFriendly } from "@src/util/dateFormatter";
+import InjuryReport from "@src/components/game/InjuryReport";
+import Roster from "@src/components/game/Roster";
 
 type Props = {
     game: Game | null;
@@ -16,40 +18,52 @@ const GameDetail: React.FC<Props> = ({ game }: Props) => {
         );
     }
 
-    const { homeTeam: { name: homeName, abbreviation: homeAbbreviation }, awayTeam: { name: awayName, abbreviation: awayAbbreviation }, scheduledDateTime } = game;
+    const {
+        homeTeam: { abbreviation: homeAbbreviation },
+        awayTeam: { abbreviation: awayAbbreviation },
+        homeMatchup,
+        awayMatchup,
+        scheduledDateTime
+    } = game;
 
     return (
         <div>
             <Head>
-                <title>Backcourt | {homeAbbreviation} @ {awayAbbreviation} scheduledDateTime ? {`| ${formatDateFriendly(scheduledDateTime)} ${formatTimeFriendly(scheduledDateTime)}`} : ``</title>
+                <title>Backcourt | {homeAbbreviation} @ {awayAbbreviation} {scheduledDateTime ? `| ${formatDateFriendly(scheduledDateTime)} ${formatTimeFriendly(scheduledDateTime)}` : ``}</title>
                 <meta name={"description"} content={`Game Page`} />
                 <link rel={"icon"} href={"/favicon.ico"} />
             </Head>
 
             <main>
-                <div className={"game--header"}>
-                    <HeaderTeamCard team={game.awayTeam} homeTeam={false} />
+                <div className={"game--header-wrapper"}>
+                    <div className={"game--header"}>
+                        <HeaderTeamCard team={game.awayTeam} homeTeam={false} />
 
-                    <div className={"game-status"}>
-                        {scheduledDateTime ? (
-                            <>
+                        <div className={"game-status"}>
+                            {scheduledDateTime ? (
+                                <>
                                 <span className={"game-status--date"}>
                                     {formatDateFriendly(scheduledDateTime)}
                                 </span>
 
-                                <span className={"game-status--time"}>
+                                    <span className={"game-status--time"}>
                                     {formatTimeFriendly(scheduledDateTime)} GMT
-
                                 </span>
-                            </>
-                        ): ''}
-                    </div>
+                                </>
+                            ): ''}
+                        </div>
 
-                    <HeaderTeamCard team={game.homeTeam} />
+                        <HeaderTeamCard team={game.homeTeam} />
+                    </div>
+                </div>
+
+                <div className={"container dual-container"}>
+                    <Roster team={game.awayTeam} matchup={awayMatchup} />
+                    <Roster team={game.homeTeam} matchup={homeMatchup} />
                 </div>
 
                 <div className={"container"}>
-                    <h1>{awayName} @ {homeName}</h1>
+                    <InjuryReport />
                 </div>
             </main>
         </div>

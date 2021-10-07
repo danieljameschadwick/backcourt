@@ -3,6 +3,7 @@ import { Player } from "@src/util/types";
 import currencyFormatter from "@src/util/currencyFormatter";
 import _404 from "@src/pages/404";
 import { HttpStatus } from "@src/util/HttpStatus";
+import { formatDate } from "@src/util/dateFormatter";
 
 type Props = {
     player: Player | null;
@@ -37,7 +38,7 @@ const PlayerDetail: React.FC<Props> = ({ player }: Props) => {
                     <h1>{firstName} {lastName}</h1>
 
                     <ul>
-                        <li>{dateOfBirth}</li>
+                        <li>{formatDate(dateOfBirth)}</li>
                         <li>{age}</li>
                         <li>{team ? team.name : "Free Agent"}</li>
                         {player.contract ? (

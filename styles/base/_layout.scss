@@ -8,3 +8,10 @@
         margin: 0 0.75em;
     }
 }
+
+.dual-container
+{
+    display: grid;
+    grid-template-areas: "card card";
+    column-gap: 1em;
+}

@@ -12,9 +12,9 @@ const HeaderTeamCard = ({ team, homeTeam = true }: Props) => {
         <div className={`${homeTeam ? "home" : "away"}-team team`}>
             <div className={"team--content"}>
                 <div className={"team--container"}>
-                    {!homeTeam ? (
+                    {homeTeam ? (
                         <div className={"team--logo"}>
-                            <img height={"75"} alt={""} src={"/image/player/avatar.png"} />
+                            <img height={45} alt={""} src={"/image/player/avatar.png"} />
                         </div>)
                     : ''}
 
@@ -23,13 +23,13 @@ const HeaderTeamCard = ({ team, homeTeam = true }: Props) => {
                             {name}
                         </div>
                         <div className={"team--record"}>
-                            1-0
+                            0-0
                         </div>
                     </div>
 
-                    {homeTeam ? (
+                    {!homeTeam ? (
                         <div className={"team--logo"}>
-                            <img height={"75"} alt={""} src={"/image/player/avatar.png"} />
+                            <img height={45} alt={""} src={"/image/player/avatar.png"} />
                         </div>
                     ) : ''}
                 </div>

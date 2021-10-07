@@ -38,7 +38,7 @@ const PlayerHeader = ({ team, player }: Props) => {
                         <div className={"stat"}>
                             <div className={"player-stat-label"}>DoB:</div>
                             <div className={"stat-value"}>
-                                {formatDate(new Date(player.dateOfBirth))}
+                                {formatDate(player.dateOfBirth)}
                             </div>
                         </div>
 

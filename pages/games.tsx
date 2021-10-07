@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { Game } from "@src/util/type/Game";
+import { formatDate } from "@src/util/dateFormatter";
 
 type Props = {
     games: Game[];
@@ -23,7 +24,9 @@ const Games = ({ games }: Props) => {
 
                         return (
                             <div key={id}>
-                                <a href={`/games/${id}`}>{awayTeam.name} @ {homeTeam.name}, 17/12/2021</a>
+                                <a href={`/games/${id}`}>
+                                    {awayTeam.name} @ {homeTeam.name}, {formatDate(game.scheduledDateTime)}
+                                </a>
                             </div>
                         );
                     }) : "No games found."}
