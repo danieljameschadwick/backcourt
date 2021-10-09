@@ -12,11 +12,11 @@
 .dual-container
 {
     display: grid;
-    grid-template-areas: "card card";
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     column-gap: 1em;
+}
 
-    @media screen and (max-width: 768px)
-    {
-        grid-template-areas: "card";
-    }
+.team-player--container
+{
+    grid-template-columns: repeat(auto-fit, minmax(580px, 1fr));
 }
