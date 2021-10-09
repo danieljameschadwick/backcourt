@@ -9,7 +9,35 @@
     }
 }
 
-.dual-container
+.layout-container
+{
+    display: grid;
+    grid-template-areas: "content content content content sidebar";
+    column-gap: 1em;
+
+    @media (max-width: 768px)
+    {
+        grid-template-areas:
+            "content"
+            "sidebar";
+    }
+
+    .content-container
+    {
+        display: grid;
+        grid-gap: 1em;
+        grid-area: content;
+    }
+
+    .sidebar-container
+    {
+        display: grid;
+        grid-gap: 1em;
+        grid-area: sidebar;
+    }
+}
+
+.split-container
 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));

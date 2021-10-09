@@ -39,4 +39,15 @@
     {
         width: 100%;
     }
+
+    .card--container
+    {
+        margin-bottom: 0.80em;
+
+        &:last-child
+        {
+            margin-bottom: 0.1em;
+        }
+    }
+
 }

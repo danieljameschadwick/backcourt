@@ -7,6 +7,7 @@ import { formatDateFriendly, formatDateShort, formatTimeFriendly } from "@src/ut
 import InjuryReport from "@src/components/game/InjuryReport";
 import Roster from "@src/components/game/Roster";
 import dynamic from "next/dynamic";
+import Standings from "@src/components/game/Standings";
 
 const GameControls = dynamic(
     () => import('@src/components/game/GameControls'),
@@ -81,13 +82,21 @@ const GameDetail: React.FC<Props> = ({ game }: Props) => {
                     <GameControls game={game} />
                 </div>
 
-                <div className={"container dual-container"}>
-                    <Roster team={game.awayTeam} matchup={awayMatchup} />
-                    <Roster team={game.homeTeam} matchup={homeMatchup} />
-                </div>
+                <div className={"container layout-container"}>
+                    <div className={"content-container"}>
+                        <div className={"split-container "}>
+                            <Roster team={game.awayTeam} matchup={awayMatchup} />
+                            <Roster team={game.homeTeam} matchup={homeMatchup} />
+                        </div>
 
-                <div className={"container"}>
-                    <InjuryReport />
+                        <InjuryReport />
+                    </div>
+
+                    <div className={"sidebar-container"}>
+                        <Standings />
+
+                        <Standings />
+                    </div>
                 </div>
             </main>
         </div>
