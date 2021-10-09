@@ -31,6 +31,10 @@
                 height: 40px;
                 overflow: hidden;
                 padding: 0 20px;
+
+                @media screen and (max-width: 480px) {
+                    padding: 0 5px 0 10px;
+                }
             }
 
             .team--info
@@ -42,8 +46,6 @@
                 .team--name
                 {
                     width: 100%;
-                    font-size: 1.05em;
-                    font-weight: 500;
 
                     @media screen and (max-width: 768px)
                     {
@@ -53,8 +55,6 @@
 
                 .team--abbreviation
                 {
-                    font-size: 1.05em;
-                    font-weight: 500;
                     display: none;
 
                     @media screen and (max-width: 768px)
@@ -64,13 +64,25 @@
                     }
                 }
 
+                .team--name,
+                .team--abbreviation
+                {
+                    font-size: 1.05em;
+                    font-weight: 500;
+                    text-decoration: none;
+                    color: $dark;
+
+                    &:hover
+                    {
+                        color: $dark-gray;
+                    }
+                }
+
                 .team--record
                 {
                     width: 100%;
                     font-size: 0.80em;
                     color: #6C6D6F;
-
-                    // @TODO: smaller record text
                 }
             }
         }
@@ -100,6 +112,13 @@
             display: flex;
             justify-content: flex-end;
         }
+
+        .team--logo
+        {
+            @media screen and (max-width: 480px) {
+                padding: 0 5px 0 10px;
+            }
+        }
     }
 
     .game-status
@@ -114,9 +133,32 @@
             min-width: 100px;
         }
 
+        @media screen and (max-width: 380px)
+        {
+            min-width: 60px;
+        }
+
         .game-status--date
         {
             width: 100%;
+
+            @media screen and (max-width: 480px) {
+                display: none;
+            }
+        }
+
+        .game-status--short-date
+        {
+            display: none;
+
+            @media screen and (max-width: 480px) {
+                display: block;
+            }
+        }
+
+        .game-status--date,
+        .game-status--short-date
+        {
             text-align: center;
             font-size: 0.90em;
             line-height: 1.75em;
@@ -126,6 +168,26 @@
         {
             font-size: 0.80em;
             color: #6C6D6F;
+            text-align: center;
         }
+    }
+}
+
+.post-header
+{
+    display: none;
+    border-top: 0.1em solid #DCDDDF;
+    padding: 0.5em 0;
+
+    @media screen and (max-width: 380px)
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &.hidden
+    {
+        display: none;
     }
 }

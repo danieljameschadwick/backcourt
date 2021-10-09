@@ -5,6 +5,7 @@ import { Team, Player } from "@src/util/types";
 import TeamPlayerCard from "@src/components/team/TeamPlayerCard";
 import { HttpStatus } from "@src/util/HttpStatus";
 import _404 from "@src/pages/404";
+import dynamic from "next/dynamic";
 
 const PlayerSchema = Yup.object().shape({
     player: Yup.string()
@@ -20,6 +21,11 @@ const handleResign = async (teamId: string, playerId: string): Promise<void> => 
     await fetch(`${process.env.API}/team/${teamId}/sign/${playerId}`, requestOptions);
     window.location.reload();
 };
+
+const TeamControls = dynamic(
+    () => import('@src/components/team/TeamControls'),
+    { ssr: false }
+);
 
 type Props = {
     team: Team | null;
@@ -47,11 +53,7 @@ const TeamDetail: React.FC<Props> = ({ team, freeAgents }: Props) => {
                 <div className={"container"}>
                     <h1>{name}</h1>
 
-                    {/* @TODO: remove hard coded styling controls */}
-                    <div className={"controls"} style={{marginBottom: "1em"}}>
-                        <button>Show all attributes</button>
-                        <button>Show all details</button>
-                    </div>
+                    <TeamControls team={team} />
 
                     <div className={"player-card--container"}>
                         {players ? players.map(player => {

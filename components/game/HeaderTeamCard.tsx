@@ -19,12 +19,12 @@ const HeaderTeamCard = ({ team, homeTeam = true }: Props) => {
                     : ''}
 
                     <div className={"team--info"}>
-                        <div className={"team--name"}>
+                        <a href={`/teams/${team.id}`}  className={"team--name"}>
                             {name}
-                        </div>
-                        <div className={"team--abbreviation"}>
+                        </a>
+                        <a href={`/teams/${team.id}`} className={"team--abbreviation"}>
                             {abbreviation}
-                        </div>
+                        </a>
                         <div className={"team--record"}>
                             0-0
                         </div>

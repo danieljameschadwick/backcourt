@@ -3,7 +3,6 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { LoginDTO } from "@src/util/dto/LoginDTO";
 import { useStateValue } from "@src/state/StateProvider";
-import { useEffect } from "react";
 
 const LoginSchema = Yup.object().shape({
     username: Yup.string()
@@ -34,7 +33,8 @@ const Login = () => {
         const data = await response.json();
 
         dispatch({ type: "setUsername", username: data.username });
-        dispatch({ type: "setAccessToken", accessToken: data.access_token });
+        dispatch({ type: "setTeam", team: data.team });
+        dispatch({ type: "setAccessToken", accessToken: data.accessToken });
     };
 
     return (
@@ -48,8 +48,6 @@ const Login = () => {
             <main>
                 <div className={"container"}>
                     <h1>Login</h1>
-
-                    <span>{user?.username}</span>
 
                     <Formik
                         initialValues={{

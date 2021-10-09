@@ -3,7 +3,7 @@ import _404 from "@src/pages/404";
 import { HttpStatus } from "@src/util/HttpStatus";
 import { Game } from "@src/util/type/Game";
 import HeaderTeamCard from "@src/components/game/HeaderTeamCard";
-import { formatDateFriendly, formatTimeFriendly } from "@src/util/dateFormatter";
+import { formatDateFriendly, formatDateShort, formatTimeFriendly } from "@src/util/dateFormatter";
 import InjuryReport from "@src/components/game/InjuryReport";
 import Roster from "@src/components/game/Roster";
 
@@ -29,7 +29,7 @@ const GameDetail: React.FC<Props> = ({ game }: Props) => {
     return (
         <div>
             <Head>
-                <title>Backcourt | {homeAbbreviation} @ {awayAbbreviation} {scheduledDateTime ? `| ${formatDateFriendly(scheduledDateTime)} ${formatTimeFriendly(scheduledDateTime)}` : ``}</title>
+                <title>Backcourt | {homeAbbreviation} @ {awayAbbreviation} {scheduledDateTime ? `| ${formatDateFriendly(scheduledDateTime)} ${formatTimeFriendly(scheduledDateTime)} GMT` : ``}</title>
                 <meta name={"description"} content={`Game Page`} />
                 <link rel={"icon"} href={"/favicon.ico"} />
             </Head>
@@ -46,6 +46,10 @@ const GameDetail: React.FC<Props> = ({ game }: Props) => {
                                         {formatDateFriendly(scheduledDateTime)}
                                     </span>
 
+                                    <span className={"game-status--short-date"}>
+                                        {formatDateShort(scheduledDateTime)}
+                                    </span>
+
                                     <span className={"game-status--time"}>
                                         {formatTimeFriendly(scheduledDateTime)} GMT
                                     </span>
@@ -54,6 +58,16 @@ const GameDetail: React.FC<Props> = ({ game }: Props) => {
                         </div>
 
                         <HeaderTeamCard team={game.homeTeam} />
+                    </div>
+
+                    <div className={`post-header hidden`}>
+                        {scheduledDateTime ? (
+                            <>
+                                <span className={"game-status--date"}>
+                                    {formatDateFriendly(scheduledDateTime)}, {formatTimeFriendly(scheduledDateTime)} GMT
+                                </span>
+                            </>
+                        ) : ""}
                     </div>
                 </div>
 

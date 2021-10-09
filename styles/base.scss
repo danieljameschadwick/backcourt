@@ -15,7 +15,11 @@ body,
     height: 100vh;
 }
 
+// priority base import
 @import 'base/_colours';
+@import 'base/_overlay';
+
+@import 'base/_card';
 @import 'base/_heading';
 @import 'base/_layout';
 @import 'base/_links';

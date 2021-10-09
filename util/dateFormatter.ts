@@ -21,6 +21,13 @@ const formatDateFriendly = (date: string): string => {
     )
 };
 
+const formatDateShort = (date: string): string => {
+    return format(
+        parseISO(date),
+        'dd/MM',
+    )
+};
+
 const formatTimeFriendly = (date: string): string => {
     return format(
         parseISO(date),
@@ -32,5 +39,6 @@ export {
     calculateAge,
     formatDate,
     formatDateFriendly,
+    formatDateShort,
     formatTimeFriendly,
 };

@@ -9,7 +9,7 @@ const GameCard = ({ title, additionalClasses = null, children }: Props) => {
         <div className={`card--container game--card ${additionalClasses}`}>
             <div className={"card--header"}>
 
-                <h3 className={"title"}>{title}</h3>
+                <h3 className={"title title-sm"}>{title}</h3>
             </div>
 
             <div className={"card--content"}>

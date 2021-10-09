@@ -1,10 +1,11 @@
 import { useStateValue } from "@src/state/StateProvider";
 
 const Header: React.FC = () => {
-    const [ { user }, dispatch ] = useStateValue();
+    const [ { user: { username = null, team = null } }, dispatch ] = useStateValue();
 
     const logout = () => {
         dispatch({ type: "setUsername", username: null });
+        dispatch({ type: "setTeam", team: null });
         dispatch({ type: "setAccessToken", accessToken: null });
 
         window.location.reload();
@@ -13,9 +14,9 @@ const Header: React.FC = () => {
     return (
         <div className={"header--userbar"}>
             <div className={"user-links"}>
-                {user.username ? (
-                    <a href={`/user/${user.username}`}>
-                        {user.username}
+                {username ? (
+                    <a href={`/user/${username}`}>
+                        {username}
                     </a>
                 ) : (
                     <a href={"/login"}>
@@ -23,9 +24,21 @@ const Header: React.FC = () => {
                     </a>
                 )}
 
+                {team ? (
+                    <>
+                        <span className={"splitter"}>|</span>
+
+                        <span className={"label"}>
+                            Team: <a href={`/teams/${team.id}`}>
+                                {team.name}
+                            </a>
+                        </span>
+                    </>
+                ) : ''}
+
                 <span className={"splitter"}>|</span>
 
-                {user.username ? (
+                {username ? (
                     <a href={"#"} onClick={() => logout()}>
                         Logout
                     </a>

@@ -1,0 +1,37 @@
+.card--container
+{
+    background: $white;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    border-radius: 0.5em;
+    margin-top: 1.25em;
+    margin-bottom: 0.4em;
+
+    .card--header
+    {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 1em 1em;
+        border-bottom: 1px solid #dcdddf;
+
+        .title
+        {
+            font-size: 1em;
+            font-weight: 600;
+            line-height: 0.85em;
+
+            &.title-sm
+            {
+                font-size: 0.85em;
+            }
+        }
+    }
+
+    .card--content
+    {
+        overflow: hidden;
+        padding: 0 1em 1em;
+    }
+}
