@@ -6,6 +6,12 @@ import HeaderTeamCard from "@src/components/game/HeaderTeamCard";
 import { formatDateFriendly, formatDateShort, formatTimeFriendly } from "@src/util/dateFormatter";
 import InjuryReport from "@src/components/game/InjuryReport";
 import Roster from "@src/components/game/Roster";
+import dynamic from "next/dynamic";
+
+const GameControls = dynamic(
+    () => import('@src/components/game/GameControls'),
+    { ssr: false }
+);
 
 type Props = {
     game: Game | null;
@@ -69,6 +75,10 @@ const GameDetail: React.FC<Props> = ({ game }: Props) => {
                             </>
                         ) : ""}
                     </div>
+                </div>
+
+                <div className={"container"}>
+                    <GameControls game={game} />
                 </div>
 
                 <div className={"container dual-container"}>
