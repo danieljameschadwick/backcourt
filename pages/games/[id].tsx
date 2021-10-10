@@ -26,12 +26,20 @@ const GameDetail: React.FC<Props> = ({ game }: Props) => {
     }
 
     const {
-        homeTeam: { abbreviation: homeAbbreviation },
-        awayTeam: { abbreviation: awayAbbreviation },
+        homeTeam: {
+            abbreviation: homeAbbreviation,
+            division: homeDivision = null
+        },
+        awayTeam: {
+            abbreviation: awayAbbreviation,
+            division: awayDivision = null
+        },
         homeMatchup,
         awayMatchup,
         scheduledDateTime
     } = game;
+
+    const sameDivision = (homeDivision && awayDivision) && (homeDivision.id === awayDivision.id);
 
     return (
         <div>
@@ -84,7 +92,7 @@ const GameDetail: React.FC<Props> = ({ game }: Props) => {
 
                 <div className={"container layout-container"}>
                     <div className={"content-container"}>
-                        <div className={"split-container "}>
+                        <div className={"split-container"}>
                             <Roster team={game.awayTeam} matchup={awayMatchup} />
                             <Roster team={game.homeTeam} matchup={homeMatchup} />
                         </div>
@@ -93,9 +101,20 @@ const GameDetail: React.FC<Props> = ({ game }: Props) => {
                     </div>
 
                     <div className={"sidebar-container"}>
-                        <Standings />
+                        <div className={"column-container"}>
+                            {(homeDivision && awayDivision) ?
+                                sameDivision ? (
+                                    <Standings divisionId={homeDivision.id} />
+                                ) : (
+                                    <>
+                                        <Standings divisionId={awayDivision.id} />
 
-                        <Standings />
+                                        <Standings divisionId={homeDivision.id} />
+                                    </>
+                                )
+                                : ''
+                            }
+                        </div>
                     </div>
                 </div>
             </main>

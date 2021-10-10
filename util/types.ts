@@ -20,7 +20,14 @@ export type Team = {
     id: string;
     name: string;
     abbreviation: string;
+    division?: Division | null;
     players: TeamPlayer[];
+};
+
+export type Division = {
+    id: string;
+    name: string;
+    teams: Team[];
 };
 
 export type TeamPlayer = {
