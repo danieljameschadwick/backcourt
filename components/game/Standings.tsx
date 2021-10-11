@@ -49,11 +49,11 @@ const Standings = ({ divisionId }: Props) => {
                                     <img height={15} alt={""} src={"/image/player/avatar.png"} />
                                     {name}
                                 </td>
-                                <td />
-                                <td />
-                                <td />
-                                <td />
-                                <td />
+                                <td>0</td>
+                                <td>0</td>
+                                <td>-</td>
+                                <td>0</td>
+                                <td>0</td>
                             </tr>
                         );
                     })}

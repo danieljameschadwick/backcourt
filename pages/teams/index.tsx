@@ -35,7 +35,7 @@ type Props = {
     teams: Team[];
 };
 
-const Teams = ({ teams }: Props) => {
+const Index = ({ teams }: Props) => {
     return (
         <div>
             <Head>
@@ -130,4 +130,4 @@ export const getStaticProps = async () => {
     };
 };
 
-export default Teams;
+export default Index;

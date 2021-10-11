@@ -1,4 +1,4 @@
-import Header from "@src/components/layout/Header";
+import Header from "@src/components/header/Header";
 
 type Props = {
     children: React.FC;

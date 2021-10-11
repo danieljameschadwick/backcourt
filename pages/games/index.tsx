@@ -6,7 +6,7 @@ type Props = {
     games: Game[];
 };
 
-const Games = ({ games }: Props) => {
+const Index = ({ games }: Props) => {
     return (
         <div>
             <Head>
@@ -47,4 +47,4 @@ export const getStaticProps = async () => {
     };
 };
 
-export default Games;
+export default Index;

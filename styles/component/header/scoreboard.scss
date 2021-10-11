@@ -1,0 +1,114 @@
+.header--scoreboard-container
+{
+    height: 65px;
+    background-color: #F1F2F3;
+}
+
+.header--scoreboard
+{
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 0 auto;
+    max-width: 1280px;
+    height: 100%;
+
+    @media screen and (max-width: 1280px)
+    {
+        margin: 0 0.75em;
+    }
+
+    .league-selector
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 1em;
+        font-size: 0.85em;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+
+    .games--container
+    {
+        display: flex;
+        width: 100%;
+        border-right: 0.1em solid $dark-gray;
+
+        .game-card
+        {
+            display: flex;
+            flex-wrap: wrap;
+            width: 120px;
+            font-size: 0.75em;
+            padding: 0.33em 1em;
+            background-color: $white;
+            border-left: 0.1em solid $dark-gray;
+            text-decoration: none;
+            color: $dark;
+
+            &:last-of-type
+            {
+                border-right: 0.1em solid $dark-gray;
+            }
+
+            .scorecard-teams
+            {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .scorecard-overview,
+            .scorecard-details
+            {
+                width: 100%;
+            }
+
+            .scorecard-overview
+            {
+                line-height: 1em;
+                font-weight: 500;
+            }
+
+            .team
+            {
+                display: flex;
+                width: 100%;
+
+                .team--overview
+                {
+                    display: flex;
+                    width: 100%;
+
+                    .team--score
+                    {
+                        margin-left: auto;
+                    }
+                }
+            }
+        }
+
+        .controls
+        {
+            cursor: pointer;
+            display: block;
+            float: left;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+            width: 40px;
+
+            &.controls--next
+            {
+                margin-left: auto;
+                border-left: 0.1em solid $dark-gray;
+
+                &::before
+                {
+                    content: "\003E";
+                    line-height: 65px;
+                }
+            }
+        }
+    }
+}
