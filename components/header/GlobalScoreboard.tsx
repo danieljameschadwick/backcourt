@@ -26,6 +26,11 @@ const GlobalScoreboard: React.FC = ({ divisionId }: Props) => {
         <div className={"header--scoreboard-container"}>
             <div className={"header--scoreboard"}>
                 <div className={"scoreboard-card scoreboard-card--dark league-selector"}>
+                    {/* @TODO: league dropdown selector */}
+                    NBA
+                </div>
+
+                <div className={"scoreboard-card scoreboard-card--dark league-selector"}>
                     Week 1
                 </div>
 

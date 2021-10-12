@@ -3,11 +3,10 @@ import _404 from "@src/pages/404";
 import { HttpStatus } from "@src/util/HttpStatus";
 import { Game } from "@src/util/type/Game";
 import { formatDateFriendly, formatTimeFriendly } from "@src/util/dateFormatter";
-import InjuryReport from "@src/components/game/InjuryReport";
-import Roster from "@src/components/game/Roster";
 import dynamic from "next/dynamic";
-import Standings from "@src/components/game/Standings";
 import GameHeader from "@src/components/game/GameHeader";
+import GameStrategy from "@src/components/game/Edit/GameStrategy";
+import ScoutingReport from "@src/components/game/Edit/ScoutingReport";
 
 const GameControls = dynamic(
     () => import('@src/components/game/GameControls'),
@@ -18,12 +17,14 @@ type Props = {
     game: Game | null;
 };
 
-const GameDetail: React.FC<Props> = ({ game }: Props) => {
+const GameEdit: React.FC<Props> = ({ game }: Props) => {
     if (!game) {
         return (
             <_404 message="Game not found." />
         );
     }
+
+    // @TODO: permissions, can edit? who are we editing?
 
     const {
         homeTeam: {
@@ -39,12 +40,10 @@ const GameDetail: React.FC<Props> = ({ game }: Props) => {
         scheduledDateTime
     } = game;
 
-    const sameDivision = (homeDivision && awayDivision) && (homeDivision.id === awayDivision.id);
-
     return (
         <div>
             <Head>
-                <title>Backcourt | {homeAbbreviation} @ {awayAbbreviation} {scheduledDateTime ? `| ${formatDateFriendly(scheduledDateTime)} ${formatTimeFriendly(scheduledDateTime)} GMT` : ``}</title>
+                <title>Backcourt | {homeAbbreviation} @ {awayAbbreviation}{scheduledDateTime ? ` | ${formatDateFriendly(scheduledDateTime)} ${formatTimeFriendly(scheduledDateTime)} GMT` : ``} | Edit</title>
                 <meta name={"description"} content={`Game Page`} />
                 <link rel={"icon"} href={"/favicon.ico"} />
             </Head>
@@ -53,34 +52,16 @@ const GameDetail: React.FC<Props> = ({ game }: Props) => {
                 <GameHeader game={game} />
 
                 <div className={"container"}>
-                    <GameControls game={game} isEditing={false} />
+                    <GameControls game={game} isEditing={true} />
                 </div>
 
                 <div className={"container layout-container"}>
                     <div className={"content-container"}>
-                        <div className={"split-container"}>
-                            <Roster team={game.awayTeam} matchup={awayMatchup} />
-                            <Roster team={game.homeTeam} matchup={homeMatchup} />
-                        </div>
-
-                        <InjuryReport />
+                        <GameStrategy />
                     </div>
 
                     <div className={"sidebar-container"}>
-                        <div className={"column-container"}>
-                            {(homeDivision && awayDivision) ?
-                                sameDivision ? (
-                                    <Standings divisionId={homeDivision.id} />
-                                ) : (
-                                    <>
-                                        <Standings divisionId={awayDivision.id} />
-
-                                        <Standings divisionId={homeDivision.id} />
-                                    </>
-                                )
-                                : ''
-                            }
-                        </div>
+                         <ScoutingReport />
                     </div>
                 </div>
             </main>
@@ -109,4 +90,4 @@ export const getStaticProps = async ({ params }) => {
     };
 };
 
-export default GameDetail;
+export default GameEdit;

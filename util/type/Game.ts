@@ -8,4 +8,5 @@ export type Game = {
     homeMatchup: Matchup;
     awayMatchup: Matchup;
     scheduledDateTime: string;
+    complete: boolean;
 }

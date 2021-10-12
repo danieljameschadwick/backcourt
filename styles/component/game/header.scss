@@ -1,6 +1,8 @@
 .game--header-wrapper
 {
+    margin-bottom: 1em;
     border-bottom: 0.1em solid #DCDDDF;
+    background-color: $white;
 }
 
 .game--header
@@ -190,4 +192,10 @@
     {
         display: none;
     }
+}
+
+.game-controls
+{
+    display: flex;
+    justify-content: flex-end;
 }
