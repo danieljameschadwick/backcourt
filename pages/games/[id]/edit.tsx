@@ -7,6 +7,9 @@ import dynamic from "next/dynamic";
 import GameHeader from "@src/components/game/GameHeader";
 import GameStrategy from "@src/components/game/Edit/GameStrategy";
 import ScoutingReport from "@src/components/game/Edit/ScoutingReport";
+import Matchup from "@src/components/game/Edit/Matchup";
+import { useStateValue } from "@src/state/StateProvider";
+import { Team } from "@src/util/types";
 
 const GameControls = dynamic(
     () => import('@src/components/game/GameControls'),
@@ -25,25 +28,51 @@ const GameEdit: React.FC<Props> = ({ game }: Props) => {
     }
 
     // @TODO: permissions, can edit? who are we editing?
-
+    const [ { user: { team: userTeam = null } }, dispatch ] = useStateValue();
     const {
-        homeTeam: {
-            abbreviation: homeAbbreviation,
-            division: homeDivision = null
-        },
-        awayTeam: {
-            abbreviation: awayAbbreviation,
-            division: awayDivision = null
-        },
+        homeTeam,
+        awayTeam,
         homeMatchup,
         awayMatchup,
         scheduledDateTime
     } = game;
 
+    const getTeam = (userTeam: Team, homeTeam: Team, awayTeam: Team) => {
+        if (userTeam.id === homeTeam.id) {
+            return {
+                team: homeTeam,
+                isHome: true,
+            };
+        }
+
+        if (userTeam.id === awayTeam.id) {
+            return {
+                team: awayTeam,
+                isHome: false,
+            };
+        }
+
+        return null;
+    }
+
+    if (userTeam === null) {
+        return (
+            <>User Team is null</>
+        );
+    }
+
+    const { team = null, isHome = null } = getTeam(userTeam, homeTeam, awayTeam);
+
+    if (team === null) {
+        return (
+            <>User Team is null</>
+        );
+    }
+
     return (
         <div>
             <Head>
-                <title>Backcourt | {homeAbbreviation} @ {awayAbbreviation}{scheduledDateTime ? ` | ${formatDateFriendly(scheduledDateTime)} ${formatTimeFriendly(scheduledDateTime)} GMT` : ``} | Edit</title>
+                <title>Backcourt | {homeTeam.abbreviation} @ {awayTeam.abbreviation}{scheduledDateTime ? ` | ${formatDateFriendly(scheduledDateTime)} ${formatTimeFriendly(scheduledDateTime)} GMT` : ``} | Edit</title>
                 <meta name={"description"} content={`Game Page`} />
                 <link rel={"icon"} href={"/favicon.ico"} />
             </Head>
@@ -58,10 +87,14 @@ const GameEdit: React.FC<Props> = ({ game }: Props) => {
                 <div className={"container layout-container"}>
                     <div className={"content-container"}>
                         <GameStrategy />
+
+                        <Matchup team={team} matchup={(isHome) ? homeMatchup : awayMatchup} />
                     </div>
 
                     <div className={"sidebar-container"}>
-                         <ScoutingReport />
+                        <div className={"column-container"}>
+                            <ScoutingReport />
+                        </div>
                     </div>
                 </div>
             </main>
