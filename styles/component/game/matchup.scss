@@ -1,7 +1,58 @@
-.table
+.table--matchup
 {
     tr:nth-child(5)
     {
         border-bottom: 1px solid $dark;
+    }
+
+    thead
+    {
+        th
+        {
+            .fitness
+            {
+                text-align: right;
+            }
+        }
+    }
+
+    tr
+    {
+        .position
+        {
+            font-weight: 500;
+        }
+
+        .player--position
+        {
+            color: #6C6D6F;
+            font-size: 0.85em;
+        }
+
+        .fitness
+        {
+            text-align: right;
+
+            .text--out
+            {
+                position: relative;
+                color: $primary-red;
+                font-weight: 600;
+                text-transform: uppercase;
+
+                &::before
+                {
+                    content: " ";
+                    position: absolute;
+                    display: inline-block;
+                    top: 4.5px;
+                    left: -8px;
+                    width: 5px;
+                    height: 5px;
+                    border-radius: 50%;
+                    background-color: $primary-red;
+                }
+            }
+        }
     }
 }

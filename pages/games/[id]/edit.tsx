@@ -21,6 +21,8 @@ type Props = {
 };
 
 const GameEdit: React.FC<Props> = ({ game }: Props) => {
+    const [ { user: { team: userTeam = null } }, dispatch ] = useStateValue();
+
     if (!game) {
         return (
             <_404 message="Game not found." />
@@ -28,7 +30,6 @@ const GameEdit: React.FC<Props> = ({ game }: Props) => {
     }
 
     // @TODO: permissions, can edit? who are we editing?
-    const [ { user: { team: userTeam = null } }, dispatch ] = useStateValue();
     const {
         homeTeam,
         awayTeam,
