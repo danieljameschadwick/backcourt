@@ -3,18 +3,14 @@ import _404 from "@src/pages/404";
 import { HttpStatus } from "@src/util/HttpStatus";
 import { Game } from "@src/util/type/Game";
 import { formatDateFriendly, formatTimeFriendly } from "@src/util/dateFormatter";
+import { useStateValue } from "@src/state/StateProvider";
+import { Team } from "@src/util/types";
 import dynamic from "next/dynamic";
 import GameHeader from "@src/components/game/GameHeader";
 import GameStrategy from "@src/components/game/Edit/GameStrategy";
 import ScoutingReport from "@src/components/game/Edit/ScoutingReport";
 import Matchup from "@src/components/game/Edit/Matchup";
-import { useStateValue } from "@src/state/StateProvider";
-import { Team } from "@src/util/types";
-
-const GameControls = dynamic(
-    () => import('@src/components/game/GameControls'),
-    { ssr: false }
-);
+import GameControls from "@src/components/game/GameControls";
 
 type Props = {
     game: Game | null;
@@ -124,4 +120,6 @@ export const getStaticProps = async ({ params }) => {
     };
 };
 
-export default GameEdit;
+export default dynamic(async () => await GameEdit, {
+    ssr: false
+});
