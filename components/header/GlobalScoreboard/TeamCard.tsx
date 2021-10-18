@@ -6,6 +6,8 @@ type Props = {
 };
 
 const TeamCard: React.FC<Props> = ({ team, complete }: Props) => {
+    const { abbreviation, record: { homeRecord, awayRecord } } = team;
+
     return (
         <div className={"team cscore_item--away cscore_item--winner"}>
             <div className={"team--logo"}>
@@ -16,13 +18,13 @@ const TeamCard: React.FC<Props> = ({ team, complete }: Props) => {
                 <div className={"team--name"}>
                     {/*<span className={"cscore_name cscore_name--long"}>Los Angeles Rams</span>*/}
                     {/*<span className={"cscore_name cscore_name--short"}>Rams</span>*/}
-                    <span className={"cscore_name cscore_name--abbrev"}>{team.abbreviation}</span>
+                    <span className={"cscore_name cscore_name--abbrev"}>{abbreviation}</span>
                 </div>
                 <div className={"team--score"}>
                     {complete ? (
                         '103'
                     ) : (
-                        '0-0'
+                        `${homeRecord}-${awayRecord}`
                     )}
                 </div>
             </div>

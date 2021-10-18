@@ -2,13 +2,18 @@
 {
     tr:nth-child(5)
     {
-        border-bottom: 1px solid $dark;
+        border-bottom: 0.1em solid $dark;
     }
 
     thead
     {
         th
         {
+            .draggable
+            {
+                border: 0.01em solid $light-gray;
+            }
+
             .fitness
             {
                 text-align: right;
@@ -18,6 +23,25 @@
 
     tr
     {
+        .draggable
+        {
+            min-width: 30px;
+            width: 30px;
+            padding: 0;
+            border: 0.01em solid $light-gray;
+            cursor: grab;
+
+            &:nth-child(5)
+            {
+                border-bottom: 0.1em solid $dark;
+            }
+
+            &:hover
+            {
+                background-color: $medium-gray;
+            }
+        }
+
         .position
         {
             font-weight: 500;
@@ -27,6 +51,11 @@
         {
             color: #6C6D6F;
             font-size: 0.85em;
+        }
+
+        .name
+        {
+            width: 100%;
         }
 
         .fitness
@@ -53,6 +82,11 @@
                     background-color: $primary-red;
                 }
             }
+        }
+
+        .action
+        {
+            text-align: right;
         }
     }
 }

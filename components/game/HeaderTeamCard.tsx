@@ -6,7 +6,7 @@ type Props = {
 };
 
 const HeaderTeamCard = ({ team, homeTeam = true }: Props) => {
-    const { name, abbreviation } = team;
+    const { name, abbreviation, record: { homeRecord, awayRecord } } = team;
 
     return (
         <div className={`${homeTeam ? "home" : "away"}-team team`}>
@@ -26,7 +26,7 @@ const HeaderTeamCard = ({ team, homeTeam = true }: Props) => {
                             {abbreviation}
                         </a>
                         <div className={"team--record"}>
-                            0-0
+                            {homeRecord}-{awayRecord}
                         </div>
                     </div>
 

@@ -12,51 +12,11 @@ import {
 import {
     arrayMove,
     SortableContext,
-    useSortable,
     verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { IndexedMatchupPositions } from "@src/util/enum/indexedMatchupPositions";
-import { Fitness, FitnessToFriendly } from "@src/util/enum/Fitness";
-
-type Props = {
-    player: any;
-    index: number;
-};
-
-export const MatchupRow = ({ player, index }: Props) => {
-    const {
-        id,
-        matchupPosition,
-        position,
-        name,
-        fitness,
-    } = player;
-    const {
-        attributes,
-        listeners,
-        setNodeRef,
-    } = useSortable({ id: id });
-
-    return (
-        <tr
-            ref={setNodeRef}
-            {...attributes}
-            {...listeners}
-        >
-            <td className={"position"}>
-                {matchupPosition}
-            </td>
-            <td>
-                <span className={"player--name"}>{name}</span>, <span className={"player--position"}>{position}</span>
-            </td>
-            <td className={"fitness"}>
-                { fitness === Fitness.OUT ? (
-                    <span className={"text--out"}>{FitnessToFriendly[fitness]}</span>
-                ) : ''}
-            </td>
-        </tr>
-    );
-};
+import { Fitness } from "@src/util/enum/Fitness";
+import { MatchupRow } from "@src/components/game/Edit/MatchupRow";
 
 const Matchup = ({ team, matchup }) => {
     const { pointGuard, shootingGuard, smallForward, powerForward, center } = matchup;
@@ -69,27 +29,64 @@ const Matchup = ({ team, matchup }) => {
         { id: "5", matchupPosition: "6", name: "Alex Caruso", position: "PG", fitness: Fitness.OUT },
     ]);
     const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
+    const [ movingPlayer, setMovingPlayer ] = useState<number | null>(null);
+
+    const moveEvent = (id: number) => {
+        if (movingPlayer === null) {
+            setMovingPlayer(id);
+
+            return;
+        }
+
+        if (movingPlayer === id) {
+            setMovingPlayer(null);
+
+            return;
+        }
+
+        movePlayer(movingPlayer, id);
+
+        /**
+         * Once the original player is moved, we need to move the replaced player
+         * to the original index (hence id - 1).
+         */
+        if (movingPlayer < id) {
+            movePlayer(id - 1, movingPlayer); // if moving player down, increment
+        } else {
+            movePlayer(id + 1, movingPlayer); // if moving player up, increment
+        }
+
+        setMovingPlayer(null);
+    };
+
+    const resetMove = () => {
+        setMovingPlayer(null);
+    };
+
+    const movePlayer = (index: number, moveToIndex: number) => {
+        setItems((items) => {
+            const sortedPlayers = arrayMove(items, index, moveToIndex);
+            const positionedPlayers = [];
+
+            for (const [ index, player ] of sortedPlayers.entries()) {
+                positionedPlayers.push({
+                    ...player,
+                    matchupPosition: IndexedMatchupPositions[index],
+                });
+            }
+
+            return positionedPlayers;
+        });
+    };
 
     const handleDragEnd = (event) => {
         const { active, over } = event;
 
         if (active.id !== over.id) {
-            setItems((items) => {
-                const oldIndex = active.data.current.sortable.index;
-                const newIndex = over.data.current.sortable.index;
-                const sortedPlayers = arrayMove(items, oldIndex, newIndex);
+            const oldIndex = active.data.current.sortable.index;
+            const newIndex = over.data.current.sortable.index;
 
-                const positionedPlayers = [];
-
-                for (const [index, player] of sortedPlayers.entries()) {
-                    positionedPlayers.push({
-                        ...player,
-                        matchupPosition: IndexedMatchupPositions[index],
-                    });
-                }
-
-                return positionedPlayers;
-            });
+            movePlayer(oldIndex, newIndex);
         }
     };
 
@@ -113,15 +110,29 @@ const Matchup = ({ team, matchup }) => {
                 <SortableContext items={items} strategy={verticalListSortingStrategy}>
                     <table className={"table table--matchup"}>
                         <thead>
-                        <tr>
-                            <th className={"position"}>Pos.</th>
-                            <th>Name</th>
-                            <th className={"fitness"}></th>
-                        </tr>
+                            <tr>
+                                <th></th>
+                                <th className={"position"}>Pos.</th>
+                                <th>Name</th>
+                                <th className={"fitness"}></th>
+                                <th>
+                                    {movingPlayer !== null ? (
+                                        <button type={"reset"} onClick={() => resetMove()}>
+                                            Reset
+                                        </button>
+                                    ) : ""}
+                                </th>
+                            </tr>
                         </thead>
                         <tbody>
                             {items.map((player, index) => (
-                                <MatchupRow key={player.id} player={player} index={index} />
+                                <MatchupRow
+                                    key={player.id}
+                                    index={index}
+                                    player={player}
+                                    moveEvent={moveEvent}
+                                    isMoving={index === movingPlayer}
+                                />
                             ))}
                         </tbody>
                     </table>

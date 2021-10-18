@@ -21,6 +21,7 @@ export type Team = {
     name: string;
     abbreviation: string;
     division?: Division | null;
+    record: TeamRecord;
     players: TeamPlayer[];
 };
 
@@ -28,6 +29,11 @@ export type Division = {
     id: string;
     name: string;
     teams: Team[];
+};
+
+export type TeamRecord = {
+    homeRecord: number;
+    awayRecord: number;
 };
 
 export type TeamPlayer = {
