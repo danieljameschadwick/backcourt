@@ -6,7 +6,9 @@ type Props = {
 };
 
 const TeamControls: React.FC<Props> = ({ team }: Props) => {
-    const [ { user: { team: userTeam = null } }, dispatch ] = useStateValue();
+    const [ state, dispatch ] = useStateValue();
+    const { user } = state || {};
+    const { username = null, team: userTeam = null } = user || {};
     const canEdit = userTeam?.id === team.id;
 
     {/* @TODO: remove hard coded styling controls */}

@@ -42,21 +42,33 @@ const Standings = ({ divisionId }: Props) => {
                 </tr>
                 </thead>
                 <tbody>
-                    {teams.map(({ id, name }) => {
-                        return (
-                            <tr key={id}>
-                                <td className={"name"}>
-                                    <img height={15} alt={""} src={"/image/player/avatar.png"} />
-                                    {name}
-                                </td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>-</td>
-                                <td>0</td>
-                                <td>0</td>
-                            </tr>
-                        );
-                    })}
+                    {teams
+                        .sort((
+                            { record: { homeRecord: aHomeRecord, awayRecord: aAwayRecord }},
+                            { record: { homeRecord: bHomeRecord, awayRecord: bAwayRecord }}
+                        ) => {
+                            if (aHomeRecord === bHomeRecord) {
+                                return aAwayRecord - bAwayRecord;
+                            }
+
+                            return bHomeRecord - aHomeRecord;
+                        })
+                        .map(({ id, name, record: { homeRecord, awayRecord } }) => {
+                            return (
+                                <tr key={id}>
+                                    <td className={"name"}>
+                                        <img height={15} alt={""} src={"/image/player/avatar.png"} />
+                                        {name}
+                                    </td>
+                                    <td>{homeRecord}</td>
+                                    <td>{awayRecord}</td>
+                                    <td>-</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                            );
+                        })
+                    }
                 </tbody>
             </table>
         </GameCard>

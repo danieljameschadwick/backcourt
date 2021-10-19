@@ -7,27 +7,28 @@ import {
     MouseSensor,
     TouchSensor,
     useSensor,
-    useSensors
+    useSensors,
 } from "@dnd-kit/core";
 import {
     arrayMove,
     SortableContext,
     verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import { IndexedMatchupPositions } from "@src/util/enum/indexedMatchupPositions";
-import { Fitness } from "@src/util/enum/Fitness";
+import { IndexedMatchupPositions } from "@src/util/enum/IndexedMatchupPositions";
 import { MatchupRow } from "@src/components/game/Edit/MatchupRow";
+import { Team } from "@src/util/types";
+import { Matchup as MatchupType } from "@src/util/type/Matchup";
+import { formatMatchupData, formatMatchupSaveData, MatchupRowType } from "@src/util/formatMatchup";
+import { Game } from "@src/util/type/Game";
 
-const Matchup = ({ team, matchup }) => {
-    const { pointGuard, shootingGuard, smallForward, powerForward, center } = matchup;
-    const [ items, setItems ] = useState<any[]>([
-        { id: "0", matchupPosition: "PG", name: "Daniel Chadwick", position: "PG", fitness: Fitness.READY },
-        { id: "1", matchupPosition: "SG", name: "Zach LaVine", position: "SG", fitness: Fitness.READY },
-        { id: "2", matchupPosition: "SF", name: "DeMar Derozan", position: "SF", fitness: Fitness.READY },
-        { id: "3", matchupPosition: "PF", name: "Patrick Williams", position: "PF", fitness: Fitness.READY },
-        { id: "4", matchupPosition: "C", name: "Nikola Vucevic", position: "C", fitness: Fitness.READY },
-        { id: "5", matchupPosition: "6", name: "Alex Caruso", position: "PG", fitness: Fitness.OUT },
-    ]);
+type Props = {
+    game: Game;
+    matchup: MatchupType;
+    isHome: boolean;
+};
+
+const Matchup = ({ game, matchup, isHome }: Props) => {
+    const [ items, setItems ] = useState<MatchupRowType[]>(formatMatchupData(matchup));
     const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
     const [ movingPlayer, setMovingPlayer ] = useState<number | null>(null);
 
@@ -79,7 +80,7 @@ const Matchup = ({ team, matchup }) => {
         });
     };
 
-    const handleDragEnd = (event) => {
+    const handleDragOver = (event) => {
         const { active, over } = event;
 
         if (active.id !== over.id) {
@@ -90,10 +91,21 @@ const Matchup = ({ team, matchup }) => {
         }
     };
 
-    const hasModified = true; // @TODO: only move if matchup has changed
+    const updateMatchup = async () => {
+        const saveData = formatMatchupSaveData(items, isHome);
+        const requestOptions = {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(saveData)
+        };
+
+        await fetch(`${process.env.API}/game/${game.id}`, requestOptions);
+    };
+
+    const hasModified = true; // @TODO: only show save if matchup has changed
     const controls = hasModified ? (
         <>
-            <button type={"submit"}>
+            <button type={"submit"} onClick={() => updateMatchup()}>
                 Save
             </button>
         </>
@@ -105,16 +117,16 @@ const Matchup = ({ team, matchup }) => {
                 autoScroll={false}
                 sensors={sensors}
                 collisionDetection={closestCenter}
-                onDragEnd={handleDragEnd}
+                onDragOver={handleDragOver}
             >
                 <SortableContext items={items} strategy={verticalListSortingStrategy}>
                     <table className={"table table--matchup"}>
                         <thead>
                             <tr>
-                                <th></th>
+                                <th />
                                 <th className={"position"}>Pos.</th>
                                 <th>Name</th>
-                                <th className={"fitness"}></th>
+                                <th className={"fitness"} />
                                 <th>
                                     {movingPlayer !== null ? (
                                         <button type={"reset"} onClick={() => resetMove()}>

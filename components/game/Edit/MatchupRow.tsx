@@ -1,5 +1,6 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { Fitness, FitnessToFriendly } from "@src/util/enum/Fitness";
+import { ShortPosition } from "@src/util/enum/Position";
 
 type Props = {
     player: any;
@@ -20,21 +21,22 @@ export const MatchupRow = ({ player, index, moveEvent, isMoving }: Props) => {
         attributes,
         listeners,
         setNodeRef,
+        isDragging,
     } = useSortable({ id: id });
 
     return (
-        <tr>
+        <tr className={`matchup-row ${isDragging ? 'faded' : ''}`}>
             <td
                 className={"draggable"}
                 ref={setNodeRef}
                 {...listeners}
                 {...attributes}
-            ></td>
+            />
             <td className={"position"}>
                 {matchupPosition}
             </td>
             <td className={"name"}>
-                <span className={"player--name"}>{name}</span>, <span className={"player--position"}>{position}</span>
+                <span className={"player--name"}>{name}</span>, <span className={"player--position"}>{ShortPosition[position]}</span>
             </td>
             <td className={"fitness"}>
                 {fitness === Fitness.OUT ? (

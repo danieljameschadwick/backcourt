@@ -1,0 +1,8 @@
+export enum MatchupPosition {
+    POINT_GUARD = "POINT_GUARD",
+    SHOOTING_GUARD = "SHOOTING_GUARD",
+    SMALL_FORWARD = "SMALL_FORWARD",
+    POWER_FORWARD = "POWER_FORWARD",
+    CENTER = "CENTER",
+    SIXTH_MAN = "sixthMan"
+}

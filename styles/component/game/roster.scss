@@ -1,4 +1,4 @@
-.table
+.table--roster
 {
     th
     {
@@ -6,6 +6,19 @@
         {
             width: 25px;
             text-align: center;
+        }
+    }
+
+    tr
+    {
+        &:nth-child(5)
+        {
+            border-bottom: 0.01em solid $dark;
+        }
+
+        &:last-child
+        {
+            border-bottom: 0.01em solid $light-gray;
         }
     }
 

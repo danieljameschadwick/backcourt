@@ -8,7 +8,7 @@ import { InitialState, State } from "@src/state/InitialState";
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
     return (
-        <StateProvider initialState={getInitialState()} reducer={Reducer}>
+        <StateProvider reducer={Reducer} initialState={getInitialState()}>
             <Layout>
                 <Component {...pageProps} />
             </Layout>

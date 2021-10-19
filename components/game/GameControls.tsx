@@ -8,7 +8,9 @@ type Props = {
 };
 
 const GameControls: React.FC<Props> = ({ game, isEditing = false }: Props) => {
-    const [ { user: { team: userTeam = null } }, dispatch ] = useStateValue();
+    const [ state, dispatch ] = useStateValue();
+    const { user } = state || {};
+    const { username = null, team: userTeam = null } = user || {};
     const router = useRouter();
 
     const { id, homeTeam, awayTeam } = game;

@@ -15,7 +15,9 @@ type Props = {
 }
 
 const GlobalScoreboard: React.FC = ({ divisionId }: Props) => {
-    const [ { user: { username = null, team = null } }, dispatch ] = useStateValue();
+    const [ state, dispatch ] = useStateValue();
+    const { user } = state || {};
+    const { username = null, team = null } = user || {};
     const [ games, setGames ] = useState<Game[]>([]);
 
     useEffect(() => {

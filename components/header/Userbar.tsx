@@ -1,7 +1,9 @@
 import { useStateValue } from "@src/state/StateProvider";
 
 const Header: React.FC = () => {
-    const [ { user: { username = null, team = null } }, dispatch ] = useStateValue();
+    const [ state, dispatch ] = useStateValue();
+    const { user } = state || {};
+    const { username = null, team = null } = user || {};
 
     const logout = () => {
         dispatch({ type: "setUsername", username: null });

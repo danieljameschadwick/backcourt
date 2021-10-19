@@ -1,4 +1,4 @@
-import { Position } from "@src/util/enum";
+import { Position } from "@src/util/enum/Position";
 import { AttributeType } from "@src/util/enum/AttributeType";
 import { AttributeEnum } from "@src/util/enum/AttributeEnum";
 

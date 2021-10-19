@@ -17,7 +17,9 @@ type Props = {
 };
 
 const GameEdit: React.FC<Props> = ({ game }: Props) => {
-    const [ { user: { team: userTeam = null } }, dispatch ] = useStateValue();
+    const [ state, dispatch ] = useStateValue();
+    const { user } = state || {};
+    const { username = null, team: userTeam = null } = user || {};
 
     if (!game) {
         return (
@@ -85,7 +87,11 @@ const GameEdit: React.FC<Props> = ({ game }: Props) => {
                     <div className={"content-container"}>
                         <GameStrategy />
 
-                        <Matchup team={team} matchup={(isHome) ? homeMatchup : awayMatchup} />
+                        <Matchup
+                            game={game}
+                            matchup={(isHome) ? homeMatchup : awayMatchup}
+                            isHome={isHome}
+                        />
                     </div>
 
                     <div className={"sidebar-container"}>

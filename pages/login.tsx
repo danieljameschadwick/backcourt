@@ -15,7 +15,6 @@ const LoginSchema = Yup.object().shape({
 
 const Login = () => {
     const [ state, dispatch ] = useStateValue();
-    const { user } = state;
 
     const handlePost = async (dto: LoginDTO) => {
         const requestOptions = {
