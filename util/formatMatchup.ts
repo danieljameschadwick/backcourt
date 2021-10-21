@@ -13,14 +13,14 @@ export type MatchupRowType = {
 };
 
 const formatMatchupRow = (matchupPosition: string, player: Player): MatchupRowType => {
-    const { id, position } = player;
+    const { id, position, fitness } = player;
 
     return {
         id: id,
         matchupPosition: matchupPosition,
         name: formatName(player),
-        position: position,
-        fitness: Fitness.READY,
+        position,
+        fitness,
     };
 }
 
