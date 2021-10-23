@@ -4,7 +4,7 @@ import { HttpStatus } from "@src/util/HttpStatus";
 import { Game } from "@src/util/type/Game";
 import { formatDateFriendly, formatTimeFriendly } from "@src/util/dateFormatter";
 import { useStateValue } from "@src/state/StateProvider";
-import { Team } from "@src/util/types";
+import { Team } from "@src/util/type/Team";
 import dynamic from "next/dynamic";
 import GameHeader from "@src/components/game/GameHeader";
 import GameStrategy from "@src/components/game/Edit/GameStrategy";
@@ -30,8 +30,10 @@ const GameEdit: React.FC<Props> = ({ game }: Props) => {
     // @TODO: permissions, can edit? who are we editing?
     const {
         homeTeam,
-        awayTeam,
         homeMatchup,
+        homeStrategy,
+        awayTeam,
+        awayStrategy,
         awayMatchup,
         scheduledDateTime
     } = game;
@@ -85,7 +87,11 @@ const GameEdit: React.FC<Props> = ({ game }: Props) => {
 
                 <div className={"container layout-container"}>
                     <div className={"content-container"}>
-                        <GameStrategy />
+                        <GameStrategy
+                            game={game}
+                            strategy={(isHome) ? homeStrategy : awayStrategy}
+                            isHome={isHome}
+                        />
 
                         <Matchup
                             game={game}

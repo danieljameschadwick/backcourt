@@ -1,4 +1,4 @@
-import { Player } from "@src/util/types";
+import { Player } from "@src/util/type/Player";
 
 export type Matchup = {
     id: string;

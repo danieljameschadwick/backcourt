@@ -16,7 +16,6 @@ import {
 } from "@dnd-kit/sortable";
 import { IndexedMatchupPositions } from "@src/util/enum/IndexedMatchupPositions";
 import { MatchupRow } from "@src/components/game/Edit/MatchupRow";
-import { Team } from "@src/util/types";
 import { Matchup as MatchupType } from "@src/util/type/Matchup";
 import { formatMatchupData, formatMatchupSaveData, MatchupRowType } from "@src/util/formatMatchup";
 import { Game } from "@src/util/type/Game";
@@ -28,6 +27,7 @@ type Props = {
 };
 
 const Matchup = ({ game, matchup, isHome }: Props) => {
+    // useContext<Game>(); instead of sharing game to each component
     const [ items, setItems ] = useState<MatchupRowType[]>(formatMatchupData(matchup));
     const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
     const [ movingPlayer, setMovingPlayer ] = useState<number | null>(null);
