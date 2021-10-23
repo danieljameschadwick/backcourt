@@ -4,7 +4,7 @@ import { Game } from "@src/util/type/Game";
 import { OffensiveStrategy, OffensiveStrategyLabelMap } from "@src/util/enum/OffensiveStrategy";
 import { DefensiveStrategy, DefensiveStrategyLabelMap } from "@src/util/enum/DefensiveStrategy";
 import { Pace, PaceLabelMap } from "@src/util/enum/Pace";
-import { Formik } from "formik";
+import { Formik, useFormikContext } from "formik";
 import * as Yup from "yup";
 
 const StrategySchema = Yup.object().shape({
@@ -25,32 +25,42 @@ const GameStrategy = ({ game, strategy, isHome }: Props) => {
         defense = DefensiveStrategy.BASE_DEFENSE,
         pace = Pace.NORMAL,
     } = strategy;
+    const hasModified = true; // @TODO: onChange?
 
     return (
-        <GameCard title={"Game Strategy"}>
+        <Formik
+            initialValues={{
+                offense,
+                defense,
+                pace,
+            }}
+            validationSchema={StrategySchema}
+            onSubmit={(values, { setSubmitting }) => {
+                console.log(values);
 
-            <Formik
-                initialValues={{
-                    offense,
-                    defense,
-                    pace,
-                }}
-                validationSchema={StrategySchema}
-                onSubmit={(values, { setSubmitting }) => {
-                    console.log(values);
-
-                    setSubmitting(false);
-                }}
-            >
-                {({
-                      values,
-                      handleChange,
-                      handleSubmit,
-                      isSubmitting,
-                      errors,
-                      touched,
-                  }) => (
-                    <form onSubmit={handleSubmit}>
+                setSubmitting(false);
+            }}
+        >
+            {({
+                  values,
+                  handleChange,
+                  handleSubmit,
+                  isSubmitting,
+              }) => (
+                <form onSubmit={handleSubmit}>
+                    <GameCard title={"Game Strategy"} controls={
+                         (hasModified) ? (
+                             <>
+                                 <button
+                                     type={"submit"}
+                                     onClick={() => handleSubmit}
+                                     disabled={isSubmitting}
+                                 >
+                                     Save
+                                 </button>
+                             </>
+                         ) : ''
+                     }>
                         <div className={"form-group"}>
                             <label>Offense:</label>
 
@@ -113,14 +123,10 @@ const GameStrategy = ({ game, strategy, isHome }: Props) => {
                                 })}
                             </select>
                         </div>
-
-                        <button type="submit" disabled={isSubmitting}>
-                            Save
-                        </button>
-                    </form>
-                )}
-            </Formik>
-        </GameCard>
+                    </GameCard>
+                </form>
+            )}
+        </Formik>
     );
 };
 

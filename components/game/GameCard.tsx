@@ -1,11 +1,11 @@
 type Props = {
     title: string;
-    additionalClasses?: string;
     children: React.ReactNode;
+    additionalClasses?: string;
     controls?: React.ReactNode | null;
 };
 
-const GameCard = ({ title, additionalClasses = null, children, controls }: Props) => {
+const GameCard = ({ title, additionalClasses = "", children, controls }: Props) => {
     return (
         <div className={`card--container game--card ${additionalClasses}`}>
             <div className={"card--header"}>
