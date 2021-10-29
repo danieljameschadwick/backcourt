@@ -7,10 +7,11 @@ import { useStateValue } from "@src/state/StateProvider";
 import { Team } from "@src/util/type/Team";
 import dynamic from "next/dynamic";
 import GameHeader from "@src/components/game/GameHeader";
-import GameStrategy from "@src/components/game/Edit/GameStrategy";
-import ScoutingReport from "@src/components/game/Edit/ScoutingReport";
-import Matchup from "@src/components/game/Edit/Matchup";
+import GameStrategy from "@src/components/game/edit/GameStrategy";
+import ScoutingReport from "@src/components/game/edit/ScoutingReport";
+import Matchup from "@src/components/game/edit/Matchup";
 import GameControls from "@src/components/game/GameControls";
+import InjuryReport from "@src/components/game/InjuryReport";
 
 type Props = {
     game: Game | null;
@@ -103,6 +104,8 @@ const GameEdit: React.FC<Props> = ({ game }: Props) => {
                     <div className={"sidebar-container"}>
                         <div className={"column-container"}>
                             <ScoutingReport />
+
+                            <InjuryReport />
                         </div>
                     </div>
                 </div>

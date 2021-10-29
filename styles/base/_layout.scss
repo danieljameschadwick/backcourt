@@ -12,14 +12,15 @@
 .layout-container
 {
     display: grid;
-    grid-template-areas: "content content content content sidebar";
+    grid-template-areas:
+        "content"
+        "sidebar";
     column-gap: 1em;
 
-    @media (max-width: 768px)
+    @media (min-width: 768px)
     {
-        grid-template-areas:
-            "content"
-            "sidebar";
+        grid-template-areas: "content sidebar";
+        grid-template-columns: 5fr 3fr;
     }
 
     .content-container

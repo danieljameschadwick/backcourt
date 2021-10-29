@@ -15,7 +15,7 @@ import {
     verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { IndexedMatchupPositions } from "@src/util/enum/IndexedMatchupPositions";
-import { MatchupRow } from "@src/components/game/Edit/MatchupRow";
+import { MatchupRow } from "@src/components/game/edit/MatchupRow";
 import { Matchup as MatchupType } from "@src/util/type/Matchup";
 import { formatMatchupData, formatMatchupSaveData, MatchupRowType } from "@src/util/formatMatchup";
 import { Game } from "@src/util/type/Game";

@@ -12,7 +12,7 @@
         display: flex;
         justify-content: space-between;
         margin: 0 1em 1em;
-        border-bottom: 1px solid #dcdddf;
+        border-bottom: 1px solid #DCDDDF;
 
         .title
         {
@@ -32,5 +32,10 @@
         overflow: hidden;
         padding: 0 1em 1em;
         font-size: 0.85em;
+
+        p
+        {
+            margin-top: 0;
+        }
     }
 }

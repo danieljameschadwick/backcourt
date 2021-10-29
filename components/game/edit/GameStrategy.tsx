@@ -4,7 +4,7 @@ import { Game } from "@src/util/type/Game";
 import { OffensiveStrategy, OffensiveStrategyLabelMap } from "@src/util/enum/OffensiveStrategy";
 import { DefensiveStrategy, DefensiveStrategyLabelMap } from "@src/util/enum/DefensiveStrategy";
 import { Pace, PaceLabelMap } from "@src/util/enum/Pace";
-import { Formik, useFormikContext } from "formik";
+import { Formik } from "formik";
 import * as Yup from "yup";
 
 const StrategySchema = Yup.object().shape({
