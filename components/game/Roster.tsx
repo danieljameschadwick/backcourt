@@ -1,14 +1,14 @@
 import GameCard from "@src/components/game/GameCard";
-import { Team } from "@src/util/types";
-import { Matchup } from "@src/util/type/Matchup";
 import { formatRosterData } from "@src/util/formatRoster";
+import { GameTeam } from "@src/util/type/GameTeam";
 
 type Props = {
-    team: Team;
-    matchup: Matchup;
+    gameTeam: GameTeam;
 };
 
-const Roster = ({ team, matchup }: Props) => {
+const Roster = ({ gameTeam }: Props) => {
+    const { team, matchup } = gameTeam;
+
     return (
         <GameCard title={`${team.name} Roster`} additionalClasses={"table--card table--roster"}>
             <table className={"table"}>

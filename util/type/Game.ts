@@ -1,15 +1,9 @@
-import { Team } from "@src/util/type/Team";
-import { Matchup } from "@src/util/type/Matchup";
-import { Strategy } from "@src/util/type/Strategy";
+import { GameTeam } from "@src/util/type/GameTeam";
 
 export type Game = {
     id: string;
-    homeTeam: Team;
-    homeMatchup: Matchup;
-    homeStrategy: Strategy;
-    awayTeam: Team;
-    awayMatchup: Matchup;
-    awayStrategy: Strategy;
+    homeTeam: GameTeam;
+    awayTeam: GameTeam;
     scheduledDateTime: string;
     complete: boolean;
 }

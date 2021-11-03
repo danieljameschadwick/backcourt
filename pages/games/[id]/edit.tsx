@@ -30,12 +30,16 @@ const GameEdit: React.FC<Props> = ({ game }: Props) => {
 
     // @TODO: permissions, can edit? who are we editing?
     const {
-        homeTeam,
-        homeMatchup,
-        homeStrategy,
-        awayTeam,
-        awayStrategy,
-        awayMatchup,
+        homeTeam: {
+            team: homeTeam,
+            matchup: homeMatchup,
+            strategy: homeStrategy,
+        },
+        awayTeam: {
+            team: awayTeam,
+            matchup: awayMatchup,
+            strategy: awayStrategy,
+        },
         scheduledDateTime
     } = game;
 

@@ -13,7 +13,15 @@ const GameControls: React.FC<Props> = ({ game, isEditing = false }: Props) => {
     const { username = null, team: userTeam = null } = user || {};
     const router = useRouter();
 
-    const { id, homeTeam, awayTeam } = game;
+    const {
+        id,
+        homeTeam: {
+            team: homeTeam,
+        },
+        awayTeam: {
+            team: awayTeam,
+        },
+    } = game;
     const canEdit = (userTeam?.id === homeTeam.id) || (userTeam?.id === awayTeam.id);
 
     const edit = () => {

@@ -7,7 +7,15 @@ type Props = {
 }
 
 const ScoreboardGame: React.FC<Props> = ({ game }: Props) => {
-    const { homeTeam, awayTeam, scheduledDateTime, complete } = game;
+    const {
+        homeTeam: {
+            team: homeTeam,
+        }, awayTeam: {
+            team: awayTeam,
+        },
+        scheduledDateTime,
+        complete,
+    } = game;
 
     return (
         <a className={"scoreboard-card game-card"} href={`/games/${game.id}`}>
@@ -15,7 +23,7 @@ const ScoreboardGame: React.FC<Props> = ({ game }: Props) => {
                 <div className={"date-time-title"}>
                     <span className={"date-time"}>
                         {complete ? (
-                            'Final'
+                            "Final"
                         ) : (
                             <>{formatDateShort(scheduledDateTime)} - {formatTimeFriendly(scheduledDateTime)}</>
                         )}

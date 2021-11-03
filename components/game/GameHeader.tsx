@@ -7,7 +7,14 @@ type Props = {
 };
 
 const GameHeader = ({ game }: Props) => {
-    const { homeTeam, awayTeam, scheduledDateTime } = game;
+    const {
+        homeTeam: {
+            team: homeTeam,
+        }, awayTeam: {
+            team: awayTeam,
+        },
+        scheduledDateTime,
+    } = game;
 
     return (
         <div className={"game--header-wrapper"}>

@@ -10,7 +10,7 @@ import Standings from "@src/components/game/Standings";
 import GameHeader from "@src/components/game/GameHeader";
 
 const GameControls = dynamic(
-    () => import('@src/components/game/GameControls'),
+    () => import("@src/components/game/GameControls"),
     { ssr: false }
 );
 
@@ -27,15 +27,17 @@ const GameDetail: React.FC<Props> = ({ game }: Props) => {
 
     const {
         homeTeam: {
-            abbreviation: homeAbbreviation,
-            division: homeDivision = null
+            team: {
+                abbreviation: homeAbbreviation,
+                division: homeDivision = null,
+            },
         },
         awayTeam: {
-            abbreviation: awayAbbreviation,
-            division: awayDivision = null
+            team: {
+                abbreviation: awayAbbreviation,
+                division: awayDivision = null,
+            },
         },
-        homeMatchup,
-        awayMatchup,
         scheduledDateTime
     } = game;
 
@@ -44,7 +46,8 @@ const GameDetail: React.FC<Props> = ({ game }: Props) => {
     return (
         <div>
             <Head>
-                <title>Backcourt | {homeAbbreviation} @ {awayAbbreviation} {scheduledDateTime ? `| ${formatDateFriendly(scheduledDateTime)} ${formatTimeFriendly(scheduledDateTime)} GMT` : ``}</title>
+                <title>Backcourt
+                    | {homeAbbreviation} @ {awayAbbreviation} {scheduledDateTime ? `| ${formatDateFriendly(scheduledDateTime)} ${formatTimeFriendly(scheduledDateTime)} GMT` : ``}</title>
                 <meta name={"description"} content={`Game Page`} />
                 <link rel={"icon"} href={"/favicon.ico"} />
             </Head>
@@ -59,8 +62,8 @@ const GameDetail: React.FC<Props> = ({ game }: Props) => {
                 <div className={"container layout-container"}>
                     <div className={"content-container"}>
                         <div className={"split-container"}>
-                            <Roster team={game.awayTeam} matchup={awayMatchup} />
-                            <Roster team={game.homeTeam} matchup={homeMatchup} />
+                            <Roster gameTeam={game.awayTeam} />
+                            <Roster gameTeam={game.homeTeam} />
                         </div>
 
                         <InjuryReport />
@@ -78,7 +81,7 @@ const GameDetail: React.FC<Props> = ({ game }: Props) => {
                                         <Standings divisionId={homeDivision.id} />
                                     </>
                                 )
-                                : ''
+                                : ""
                             }
                         </div>
                     </div>
