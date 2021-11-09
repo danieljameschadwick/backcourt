@@ -4,7 +4,7 @@ import { Game } from "@src/util/type/Game";
 import { OffensiveStrategy, OffensiveStrategyLabelMap } from "@src/util/enum/OffensiveStrategy";
 import { DefensiveStrategy, DefensiveStrategyLabelMap } from "@src/util/enum/DefensiveStrategy";
 import { Pace, PaceLabelMap } from "@src/util/enum/Pace";
-import { Formik, useFormikContext } from "formik";
+import { Formik } from "formik";
 import * as Yup from "yup";
 
 const StrategySchema = Yup.object().shape({
@@ -34,101 +34,98 @@ const GameStrategy = ({ game, strategy, isHome }: Props) => {
     };
 
     return (
-        <GameCard title={"Game Strategy"} controls={
-             (hasModified) ? (
-                 <>
-                     <button
-                         type={"submit"}
-                         onClick={() => handleSubmit}
-                         // disabled={isSubmitting}
-                     >
-                         Save
-                     </button>
-                 </>
-             ) : ''
-        }>
-            <Formik
-                initialValues={{
-                    offense,
-                    defense,
-                    pace,
-                }}
-                validationSchema={StrategySchema}
-                onSubmit={handleSubmit}
-                render={GameStrategyForm}
-            />
-        </GameCard>
-    );
-};
+        <Formik
+            initialValues={{
+                offense,
+                defense,
+                pace,
+            }}
+            validationSchema={StrategySchema}
+            onSubmit={handleSubmit}
+        >
+            {({
+                values,
+                handleChange,
+                handleSubmit,
+            }) => (
+                <GameCard title={"Game Strategy"} controls={
+                    (hasModified) ? (<>
+                        <button
+                            type={"submit"}
+                            onClick={handleSubmit}
+                            // disabled={isSubmitting}
+                        >
+                            Save
+                        </button>
+                    </>) : ''
+                }>
+                    <form onSubmit={handleSubmit}>
+                        <div className={"form-group"}>
+                            <label>Offense:</label>
 
-const GameStrategyForm = props => {
-    const { handleSubmit, handleChange, values } = props;
-
-    return (
-        <form onSubmit={handleSubmit}>
-            <div className={"form-group"}>
-                <label>Offense:</label>
-
-                <select
-                    name={"offense"}
-                    value={values.offense}
-                    onChange={handleChange}
-                >
-                    {Object.values(OffensiveStrategy).map((offensiveStrategy) => {
-                        return (
-                            <option
-                                key={offensiveStrategy}
-                                value={offensiveStrategy}
+                            <select
+                                name={"offense"}
+                                value={values.offense}
+                                onChange={handleChange}
                             >
-                                {OffensiveStrategyLabelMap[offensiveStrategy]}
-                            </option>
-                        );
-                    })}
-                </select>
-            </div>
+                                {Object.values(OffensiveStrategy).map((offensiveStrategy) => {
+                                    return (
+                                        <option
+                                            key={offensiveStrategy}
+                                            value={offensiveStrategy}
+                                        >
+                                            {OffensiveStrategyLabelMap[offensiveStrategy]}
+                                        </option>
+                                    );
+                                })}
+                            </select>
+                        </div>
 
-            <div className={"form-group"}>
-                <label>Defense:</label>
+                        <div className={"form-group"}>
+                            <label>Defense:</label>
 
-                <select
-                    name={"defense"}
-                    value={values.defense}
-                    onChange={handleChange}
-                >
-                    {Object.values(DefensiveStrategy).map((defensiveStrategy) => {
-                        return (
-                            <option
-                                key={defensiveStrategy}
-                                value={defensiveStrategy}
+                            <select
+                                name={"defense"}
+                                value={values.defense}
+                                onChange={handleChange}
                             >
-                                {DefensiveStrategyLabelMap[defensiveStrategy]}
-                            </option>
-                        );
-                    })}
-                </select>
-            </div>
+                                {Object.values(DefensiveStrategy).map((defensiveStrategy) => {
+                                    return (
+                                        <option
+                                            key={defensiveStrategy}
+                                            value={defensiveStrategy}
+                                        >
+                                            {DefensiveStrategyLabelMap[defensiveStrategy]}
+                                        </option>
+                                    );
+                                })}
+                            </select>
+                        </div>
 
-            <div className={"form-group"}>
-                <label>Pace:</label>
+                        <div className={"form-group"}>
+                            <label>Pace:</label>
 
-                <select
-                    name={"pace"}
-                    value={values.pace}
-                    onChange={handleChange}
-                >
-                    {Object.values(Pace).map((pace) => {
-                        return (
-                            <option
-                                key={pace}
-                                value={pace}
+                            <select
+                                name={"pace"}
+                                value={values.pace}
+                                onChange={handleChange}
                             >
-                                {PaceLabelMap[pace]}
-                            </option>
-                        );
-                    })}
-                </select>
-            </div>
-        </form>
+                                {Object.values(Pace).map((pace) => {
+                                    return (
+                                        <option
+                                            key={pace}
+                                            value={pace}
+                                        >
+                                            {PaceLabelMap[pace]}
+                                        </option>
+                                    );
+                                })}
+                            </select>
+                        </div>
+                    </form>
+                </GameCard>
+            )}
+        </Formik>
     );
 };
 

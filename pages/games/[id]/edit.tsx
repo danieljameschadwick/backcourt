@@ -8,7 +8,7 @@ import { Team } from "@src/util/type/Team";
 import dynamic from "next/dynamic";
 import GameHeader from "@src/components/game/GameHeader";
 import GameStrategy from "@src/components/game/edit/GameStrategy";
-import ScoutingReport from "@src/components/game/edit/ScoutingReport";
+import ScoutingReport from "@src/components/game/edit/scouting/ScoutingReport";
 import Matchup from "@src/components/game/edit/Matchup";
 import GameControls from "@src/components/game/GameControls";
 import InjuryReport from "@src/components/game/InjuryReport";
