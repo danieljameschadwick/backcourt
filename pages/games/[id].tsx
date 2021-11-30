@@ -59,7 +59,7 @@ const GameDetail: React.FC<Props> = ({ game }: Props) => {
                     <GameControls game={game} isEditing={false} />
                 </div>
 
-                <div className={"container layout-container"}>
+                <div className={"container game-container layout-container"}>
                     <div className={"content-container"}>
                         <div className={"split-container"}>
                             <Roster gameTeam={game.awayTeam} />

@@ -28,6 +28,7 @@
         display: grid;
         grid-gap: 1em;
         grid-area: content;
+        align-content: flex-start;
     }
 
     .sidebar-container
@@ -65,4 +66,9 @@
 .team-player--container
 {
     grid-template-columns: repeat(auto-fit, minmax(580px, 1fr));
+}
+
+.game-container
+{
+    padding-bottom: 1em;
 }

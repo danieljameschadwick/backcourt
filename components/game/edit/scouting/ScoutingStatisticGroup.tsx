@@ -9,12 +9,19 @@ type Props = {
 
 const ScoutingStatisticGroup = ({ label, player, children }: Props) => {
     return (
-        <div>
-            <h5>{label}</h5>
+        <div className={"statistics-leaders--row"}>
+            <h5 className={"statistic-leader--header"}>{label}</h5>
 
-            <span>{formatName(player)}</span>
+            <div className={"statistic-group--row"}>
+                <span className={"statistic-group--player"}>
+                    <span className={"statistic-player--name"}>{formatName(player)}</span>, PF
+                </span>
 
-            {children}
+                <div className={"statistic-group-items"}>
+                    {children}
+                </div>
+            </div>
+
         </div>
     );
 };

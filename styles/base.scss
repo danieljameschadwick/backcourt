@@ -1,11 +1,11 @@
 @import "~normalize.css/normalize.css";
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap");
 
 html,
 body,
 #__next
 {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     height: 100vh;
     //min-width: fit-content; // need a better approach
     margin: 0;
@@ -19,28 +19,23 @@ body,
 }
 
 // priority base import
-@import 'base/_colours';
-@import 'base/_overlay';
+@import "base/_colours";
+@import "base/_overlay";
 
-@import 'base/_card';
-@import 'base/_heading';
-@import 'base/_layout';
-@import 'base/_links';
-@import 'base/_modal';
-@import 'base/_table';
-@import 'base/_typography';
+@import "base/_card";
+@import "base/_heading";
+@import "base/_layout";
+@import "base/_links";
+@import "base/_modal";
+@import "base/_table";
+@import "base/_typography";
 
 // components
-@import 'component/layout/header';
-@import 'component/team/card';
-@import 'component/util/progress_bar';
+@import "component/layout/header";
+@import "component/team/card";
+@import "component/util/progress_bar";
 
-@import 'component/header/card';
-@import 'component/header/scoreboard';
+@import "component/header/card";
+@import "component/header/scoreboard";
 
-@import 'component/game/card';
-@import 'component/game/header';
-@import 'component/game/matchup';
-@import 'component/game/roster';
-@import 'component/game/scoutingReport';
-@import 'component/game/standings';
+@import "component/game/_game";

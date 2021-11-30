@@ -1,7 +1,49 @@
 .strategy--row
 {
-    .strategy--usage
+    .strategy--label
     {
         font-weight: 600;
+    }
+}
+
+.statistic-leader--header
+{
+    font-size: 0.95em;
+    margin-bottom: 0.75em;
+    color: $medium-gray;
+}
+
+.statistic-group--player
+{
+    font-weight: 600;
+    margin-bottom: 0.25em;
+}
+
+.statistic-group-items
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 0.50em;
+
+    .statistic-group-item
+    {
+        .statistic-value
+        {
+            font-weight: 600;
+        }
+
+        .statistic-label
+        {
+            font-weight: 600;
+            color: $medium-gray;
+        }
+    }
+
+    .statistic-value-item
+    {
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
     }
 }

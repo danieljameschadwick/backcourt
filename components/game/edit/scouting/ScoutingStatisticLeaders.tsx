@@ -6,7 +6,7 @@ const ScoutingStatisticLeaders = () => {
         <div>
             <h4>Statistic Leaders</h4>
 
-            <div>
+            <div className={"statistics-leaders--wrapper"}>
                 <ScoutingStatisticGroup label={"Points"} player={{firstName: "LeBron", lastName: "James" }}>
                     <ScoutingStatisticRow label={"PPG"} value={23.4} />
                     <ScoutingStatisticRow label={"FG%"} value={61.2} />

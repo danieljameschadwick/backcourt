@@ -1,8 +1,15 @@
-const ScoutingStatisticRow = ({ label, value }) => {
+type Props = {
+    value: number;
+    label: string;
+};
+
+const ScoutingStatisticRow = ({ value, label }) => {
     return (
-        <div>
-            <span>{value}</span>
-            <span className={"header"}>{label}</span>
+        <div className={"statistic-group-item"}>
+            <span className={"statistic-value-item"}>
+                <span className={"statistic-value"}>{value}</span>
+                <span className={"statistic-label"}>{label}</span>
+            </span>
         </div>
     );
 };

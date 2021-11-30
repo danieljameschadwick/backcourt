@@ -3,11 +3,7 @@ const ScoutedStrategyRow = ({ label, usage, children }) => {
         <li className={"strategy--row"}>
             <span className={"strategy--label"}>
                 {label}
-            </span>:
-
-            {children}
-
-            (<span className={"strategy--usage"}>{usage}%</span>)
+            </span>: <span className={"strategy--value"}>{children}</span> ({usage}%)
         </li>
     );
 }

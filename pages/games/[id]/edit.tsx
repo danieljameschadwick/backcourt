@@ -90,7 +90,7 @@ const GameEdit: React.FC<Props> = ({ game }: Props) => {
                     <GameControls game={game} isEditing={true} />
                 </div>
 
-                <div className={"container layout-container"}>
+                <div className={"container game-container layout-container"}>
                     <div className={"content-container"}>
                         <GameStrategy
                             game={game}

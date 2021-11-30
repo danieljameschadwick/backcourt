@@ -2,7 +2,7 @@ import { Matchup } from "@src/util/type/Matchup";
 import { formatName } from "@src/util/playerFormatter";
 import { Fitness } from "@src/util/enum/Fitness";
 import { Player } from "@src/util/types";
-import { ShortPosition } from "@src/util/enum/Position";
+import { Position, ShortPosition } from "@src/util/enum/Position";
 
 export type RosterRowType = {
     id: string;
@@ -11,8 +11,12 @@ export type RosterRowType = {
     fitness: string;
 };
 
-const formatRosterRow = (player: Player): RosterRowType => {
-    const { id, position } = player;
+const formatRosterRow = (player: Player, position?: Position | null): RosterRowType => {
+    const { id } = player;
+
+    if (position === null) {
+        const { position } = player;
+    }
 
     return {
         id: id,
@@ -20,7 +24,7 @@ const formatRosterRow = (player: Player): RosterRowType => {
         position: ShortPosition[position],
         fitness: Fitness.READY,
     };
-}
+};
 
 export const formatRosterData = (matchup: Matchup): RosterRowType[] => {
     const {
@@ -41,31 +45,31 @@ export const formatRosterData = (matchup: Matchup): RosterRowType[] => {
 
     if (pointGuard !== undefined) {
         matchupData.push(
-            formatRosterRow(pointGuard)
+            formatRosterRow(pointGuard, Position.POINT_GUARD)
         );
     }
 
     if (shootingGuard !== undefined) {
         matchupData.push(
-            formatRosterRow(shootingGuard)
+            formatRosterRow(shootingGuard, Position.SHOOTING_GUARD)
         );
     }
 
     if (smallForward !== undefined) {
         matchupData.push(
-            formatRosterRow(smallForward)
+            formatRosterRow(smallForward, Position.SMALL_FORWARD)
         );
     }
 
     if (powerForward !== undefined) {
         matchupData.push(
-            formatRosterRow(powerForward)
+            formatRosterRow(powerForward, Position.POWER_FORWARD)
         );
     }
 
     if (center !== undefined) {
         matchupData.push(
-            formatRosterRow(center)
+            formatRosterRow(center, Position.CENTER)
         );
     }
 
@@ -110,6 +114,8 @@ export const formatRosterData = (matchup: Matchup): RosterRowType[] => {
             formatRosterRow(twelfthMan)
         );
     }
+
+    console.log(matchupData);
 
     return matchupData;
 };
