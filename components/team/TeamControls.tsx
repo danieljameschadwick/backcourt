@@ -1,5 +1,5 @@
 import { useStateValue } from "@src/state/StateProvider";
-import { Team } from "@src/util/types";
+import { Team } from "@src/util/type/Team";
 
 type Props = {
     team: Team;

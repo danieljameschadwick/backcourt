@@ -1,7 +1,8 @@
 import Head from "next/head";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { Team, Player } from "@src/util/types";
+import { Team } from "@src/util/type/Team";
+import { Player } from "@src/util/type/Player";
 import TeamPlayerCard from "@src/components/team/TeamPlayerCard";
 import { HttpStatus } from "@src/util/HttpStatus";
 import _404 from "@src/pages/404";

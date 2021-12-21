@@ -1,4 +1,4 @@
-import { Team, TeamPlayer } from "@src/util/types";
+import { Team, TeamPlayer } from "@src/util/type/Team";
 import PlayerHeader from "@src/components/team/PlayerHeader";
 import PlayerAttributes from "@src/components/team/PlayerAttributes";
 import PlayerRecentGames from "@src/components/team/PlayerRecentGames";

@@ -1,5 +1,5 @@
 import { AttributeEnum, AttributeNameMap } from "@src/util/enum/AttributeEnum";
-import { Attribute } from "@src/util/types";
+import { Attribute } from "@src/util/type/Player";
 
 export const formatAttributes = (attributes: Attribute[]) => {
     const mappedAttributes = [];

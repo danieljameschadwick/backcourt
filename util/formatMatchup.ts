@@ -1,7 +1,6 @@
 import { Matchup } from "@src/util/type/Matchup";
 import { formatName } from "@src/util/playerFormatter";
-import { Fitness } from "@src/util/enum/Fitness";
-import { Player } from "@src/util/types";
+import { Player } from "@src/util/type/Player";
 import { MatchupPositions } from "@src/util/enum/IndexedMatchupPositions";
 
 export type MatchupRowType = {

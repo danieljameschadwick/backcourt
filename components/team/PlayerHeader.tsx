@@ -1,5 +1,5 @@
 import { formatDate } from "@src/util/dateFormatter";
-import { Team, TeamPlayer } from "@src/util/types";
+import { Team, TeamPlayer } from "@src/util/type/Team";
 import { ShortPosition } from "@src/util/enum/Position";
 
 type Props = {

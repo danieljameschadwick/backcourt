@@ -1,7 +1,8 @@
 import Head from "next/head";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { Player, Team } from "@src/util/types";
+import { Player } from "@src/util/type/Player";
+import { Team } from "@src/util/type/Team";
 import { CreatePlayerDTO, CreateTeamDTO } from "@src/util/dto";
 
 const PlayerSchema = Yup.object().shape({

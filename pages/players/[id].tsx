@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Player } from "@src/util/types";
+import { Player } from "@src/util/type/Player";
 import currencyFormatter from "@src/util/currencyFormatter";
 import _404 from "@src/pages/404";
 import { HttpStatus } from "@src/util/HttpStatus";

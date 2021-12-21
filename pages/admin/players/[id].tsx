@@ -1,11 +1,11 @@
 import Head from "next/head";
-import { Player } from "@src/util/types";
+import { Player } from "@src/util/type/Player";
 import currencyFormatter from "@src/util/currencyFormatter";
 import _404 from "@src/pages/404";
 import { HttpStatus } from "@src/util/HttpStatus";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { AttributeEnum, AttributeNameHandleMap, AttributeNameMap } from "@src/util/enum/AttributeEnum";
+import { AttributeNameHandleMap } from "@src/util/enum/AttributeEnum";
 import { formatAttributes } from "@src/util/attributesFormatter";
 
 const PlayerAttributeSchema = Yup.object().shape({

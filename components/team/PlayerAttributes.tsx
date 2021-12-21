@@ -1,4 +1,4 @@
-import { Attribute } from "@src/util/types";
+import { Attribute } from "@src/util/type/Player";
 import PlayerAttributeGroup from "@src/components/team/PlayerAttributeGroup";
 import PlayerAttribute from "@src/components/team/PlayerAttribute";
 import PlayerCard from "@src/components/team/PlayerCard";

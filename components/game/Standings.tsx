@@ -1,5 +1,5 @@
 import GameCard from "@src/components/game/GameCard";
-import { Division } from "@src/util/types";
+import { Division } from "@src/util/type/Team";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 const getDivision = async (divisionId: string, callback: Dispatch<SetStateAction<Division>>) => {

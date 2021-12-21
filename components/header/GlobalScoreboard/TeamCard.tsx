@@ -1,4 +1,4 @@
-import { Team } from "@src/util/types";
+import { Team } from "@src/util/type/Team";
 
 type Props = {
     team: Team;
